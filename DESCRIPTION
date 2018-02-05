@@ -17,9 +17,10 @@ Description: The Brazilian Jurimetrics Association (ABJ in Portuguese,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-Depends:  R (>= 2.10)
+Depends: R (>= 2.10)
 Imports:
     tm,
+    abjutils,
     stringr,
     stringi,
     dplyr,

@@ -4,13 +4,13 @@
 \alias{pt_kwic}
 \title{Keyword in context for Portuguese texts}
 \usage{
-pt_kwic(string, docname = NULL, keyword = NULL, type = "coll",
+pt_kwic(string, id_decision = NULL, keyword = NULL, type = "coll",
   before = 5, after = 5, unite = FALSE)
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}
 
-\item{docname}{a vector of docnames. If ommited, it defaults
+\item{id_decision}{a vector of id_decisions. If ommited, it defaults
 to text1,text2, text3...,}
 
 \item{keyword}{keyword to search for}
@@ -29,24 +29,24 @@ diacritics. Option "coll" is much faster than "regex".}
 separate column}
 }
 \value{
-a tbl with docname, keyword location (start and end), the keyword,
-    previous words, posterior words.
+a tbl with id_decision, keyword location (start and end), the keyword,
+    the previous words, and the posterior words.
 }
 \description{
-\code{pt_kwic} is an usefull function that allows you to extract
+\code{pt_kwic} is an useful function that allows you to extract
     words placed before and after a keyword. It is similar to 
     \code{\link[quanteda]{kwic}} from quanteda package, with two 
     important differences: it is dedicated to work only with
     Portuguese texts in a way that ignores diacritics and
-    is not case sensitive; also it returns each word in a
-    separate column as default.
+    is case insensitive; also it returns each word in a
+    separate column as a default.
 }
 \examples{
-string<-c("A for\\u00e7a do direito deve superar o direito da for\\u00e7a.",
-"Teu dever \\u00e9 lutar pelo Direito, mas se um dia encontrares o Direito
- em conflito com a Justi\\u00e7a,
-luta pela Justi\\u00e7a.")
-docname<-c("rui_barbosa","eduardo_couture")
+string<-c("A força do direito deve superar o direito da força.",
+"Teu dever é lutar pelo Direito, mas se um dia encontrares o Direito
+ em conflito com a Justiça,
+luta pela Justiça.")
+id_decision<-c("rui_barbosa","eduardo_couture")
 keyword<-"direito"
-df<-pt_kwic(string,docname,keyword)
+df<-pt_kwic(string,id_decision,keyword)
 }

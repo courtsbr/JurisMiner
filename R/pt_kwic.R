@@ -1,14 +1,14 @@
 #' Keyword in context for Portuguese texts
 #' 
-#' \code{pt_kwic} is an usefull function that allows you to extract
+#' \code{pt_kwic} is an useful function that allows you to extract
 #'     words placed before and after a keyword. It is similar to 
 #'     \code{\link[quanteda]{kwic}} from quanteda package, with two 
 #'     important differences: it is dedicated to work only with
 #'     Portuguese texts in a way that ignores diacritics and
-#'     is not case sensitive; also it returns each word in a
-#'     separate column as default. 
+#'     is case insensitive; also it returns each word in a
+#'     separate column as a default. 
 #' @param string a vector of texts from which to search for the keyword.
-#' @param docname a vector of docnames. If ommited, it defaults
+#' @param id_decision a vector of id_decisions. If ommited, it defaults
 #'     to text1,text2, text3..., 
 #' @param keyword keyword to search for
 #' @param type the type of keyword pattern matching: "coll" for
@@ -21,50 +21,50 @@
 #' @param unite if FALSE, places every previous and posterior word in
 #'    separate column
 #'
-#' @return a tbl with docname, keyword location (start and end), the keyword,
-#'     previous words, posterior words.
+#' @return a tbl with id_decision, keyword location (start and end), the keyword,
+#'     the previous words, and the posterior words.
 #' @export
 #'
 #' @examples
-#' string<-c("A for\u00e7a do direito deve superar o direito da for\u00e7a.",
-#' "Teu dever \u00e9 lutar pelo Direito, mas se um dia encontrares o Direito
-#'  em conflito com a Justi\u00e7a,
-#' luta pela Justi\u00e7a.")
-#' docname<-c("rui_barbosa","eduardo_couture")
+#' string<-c("A força do direito deve superar o direito da força.",
+#' "Teu dever é lutar pelo Direito, mas se um dia encontrares o Direito
+#'  em conflito com a Justiça,
+#' luta pela Justiça.")
+#' id_decision<-c("rui_barbosa","eduardo_couture")
 #' keyword<-"direito"
-#' df<-pt_kwic(string,docname,keyword)
+#' df<-pt_kwic(string,id_decision,keyword)
 pt_kwic <-
   function (string,
-            docname = NULL,
+            id_decision = NULL,
             keyword = NULL,
             type = "coll",
             before = 5,
             after = 5,
             unite = FALSE)
   {
-    if (is.null(docname)) {
-      docname <- paste0("text", 1:length(string))
-    } else if (length(docname) == length(string)) {
-      docname <- docname
+    if (is.null(id_decision)) {
+      id_decision <- paste0("text", 1:length(string))
+    } else if (length(id_decision) == length(string)) {
+      id_decision <- id_decision
     } else
-      stop("string and docname must have same length")
+      stop("string and id_decision must have same length")
     if (type == "coll") {
       pattern <- keyword
     } else {
-      pattern <- JurisMiner:::make_pattern(keyword)
+      pattern <- make_pattern(keyword)
     }
-    df <- purrr::map2_dfr(string, docname, purrr::possibly( ~ {
+    df <- purrr::map2_dfr(string, id_decision, purrr::possibly( ~ {
       .x <- stringi::stri_replace_all_regex(.x, "\\s+", " ")
       if (type == "coll") {
-        location <- .x %>% stringi::stri_locate_all_coll(pattern,
-                                                         strength = 1L, locale = "pt_BR") %>% magrittr::extract2(1) %>%
-          tibble::as_tibble() %>% dplyr::mutate(start = ifelse(start ==
-                                                                 1, 2, start) %>% as.integer())
+        location <- .x %>% stringi::stri_locate_all_coll(pattern, strength = 1L, locale = "pt_BR") %>%
+          magrittr::extract2(1) %>%
+          tibble::as_tibble() %>%
+          dplyr::mutate(start = ifelse(start == 1, 2, start) %>% as.integer())
       } else {
         location <- .x %>% stringi::stri_locate_all_regex(pattern) %>%
-          magrittr::extract2(1) %>% tibble::as_tibble() %>%
-          dplyr::mutate(start = ifelse(start == 1, 2, start) %>%
-                          as.integer())
+          magrittr::extract2(1) %>%
+          tibble::as_tibble() %>%
+          dplyr::mutate(start = ifelse(start == 1, 2, start) %>% as.integer())
       }
       post <-
         .x %>% stringi::stri_sub(location[[2]] + 2, nchar(.)) %>%
@@ -72,8 +72,7 @@ pt_kwic <-
                                                                                 1:after)))
       post <- dplyr::bind_rows(!!!post)
       
-      previous <- .x %>% stringi::stri_sub(1, location[[1]] -
-                                             2)
+      previous <- .x %>% stringi::stri_sub(1, location[[1]]-2)
       pre <- purrr::map2(previous, before, purrr::possibly( ~ {
         pre_count <- stringi::stri_count_words(.x)
         if (pre_count < .y) {
@@ -81,35 +80,27 @@ pt_kwic <-
         } else {
           .y <- .y
         }
-        stringr::word(.x,-.y:-1) %>% magrittr::set_names(paste0("pre",
-                                                                1:.y))
+        stringr::word(.x,-.y:-1) %>% magrittr::set_names(paste0("pre",1:.y))
       }, tibble::tibble()))
       
       pre <- dplyr::bind_rows(!!!pre)
       
-      location %<>% dplyr::mutate(start = ifelse(start == 2,
-                                                 1, start) %>% as.integer())
+      location %<>% dplyr::mutate(start = ifelse(start == 2,1, start) %>% as.integer())
       
       keyword <-
         .x %>% stringi::stri_sub(location[[1]], location[[2]]) %>%
         tibble::tibble(keyword = .)
       if (is.null(.y)) {
-        docname <-
-          paste0("text", nrow(keyword)) %>% tibble::tibble(docname = .)
+        id_decision <-
+          paste0("text", nrow(keyword)) %>% tibble::tibble(id_decision = .)
       } else {
-        docname <- rep(.y, nrow(keyword)) %>% tibble::tibble(docname = .)
+        id_decision <- rep(.y, nrow(keyword)) %>% tibble::tibble(id_decision = .)
       }
-      dplyr::bind_cols(docname, location, pre, keyword, post)
+      dplyr::bind_cols(id_decision, location, pre, keyword, post)
     }, tibble::tibble()))
     if (unite == TRUE) {
-      df %>% tidyr::unite(post,
-                          tidyselect::vars_select(names(.),
-                                                  tidyselect::starts_with("post")),
-                          sep = " ") %>%
-        tidyr::unite(pre,
-                     tidyselect::vars_select(names(.),
-                                             tidyselect::starts_with("pre")),
-                     sep = " ")
+      df %>% tidyr::unite(post,tidyselect::vars_select(names(.),tidyselect::starts_with("post")),sep = " ") %>%
+        tidyr::unite(pre,tidyselect::vars_select(names(.),tidyselect::starts_with("pre")),sep = " ")
     } else {
       return(df)
     }

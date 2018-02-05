@@ -4,29 +4,30 @@
 \alias{sg_decision}
 \title{Search for second instance judicial decision}
 \usage{
-sg_decision(string, docname, keyword, class = "appeal")
+sg_decision(string, id_decision, keyword, class = "appeal")
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}
 
-\item{docname}{a vector of docnames. If ommited, it defaults
+\item{id_decision}{a vector of id_decisions. If ommited, it defaults
 to text1,text2, text3...,}
 
 \item{keyword}{keyword to search for. For appeals, e.g, apelação and agravo,
- the keyword is "provimento". For writs, e.g, habeas corpus and "mandado
+ the keyword is usually "provimento". For writs, e.g, habeas corpus and "mandado
 "segurança", the keyword should be "concedida" or "concedido", or just a
 regex: "concedid*"}
 
-\item{class}{procedural class, either "appeal" or "writ".}
+\item{class}{procedural class, either "appeal" (default) or "writ".}
 }
 \value{
-a tibble with two columns: docname and decision: c("sim","não","parcial")
+a tbl with the id_decision, the keyword location (start and end), the keyword,
+    the previous words, the posterior words, and the decision: c("sim","não","parcial")
 }
 \description{
 Search for second instance judicial decision
 }
 \examples{
 \dontrun{
-df<-sg_decision(string,docname,"provimento")
+df<-sg_decision(string,id_decision,"provimento")
 }
 }

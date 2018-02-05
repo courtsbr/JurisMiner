@@ -1,41 +1,37 @@
 #' Function clearPt
 #' 
-#' Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and translate to lower case. 
+#' Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and convert to lower case. 
 #'
 #'
-#' @param x object to submitted to translation and removals.
-#' @param lower logical: Translate to lower case.
-#' @param stopwords logial: Removes portuguese-BR stopwords.
-#' @param accent  logial: Encode to ASCII so that it removes all accents.
-#' @param punctuation logical: Romoves punctuation.
-#' @param whitespace  logical: Remove whitespaces
-#' @param numbers     logical: Removes numbers
-#' @param ordinal    logical: Remover indicadores de ordinais
-#' @keywords clean, stopwords, accent, tranlation, punctuation, lower.
-#' @import stringi
-#' @import stringr
-#' @import tm
+#' @param string object to be submitted to conversion and removals.
+#' @param lower logical Convert to lower case.
+#' @param stopwords logial Removes portuguese-BR stopwords.
+#' @param accent  logial remove all diacritics
+#' @param punctuation logical Romoves punctuation.
+#' @param whitespace  logical Remove whitespaces
+#' @param numbers     logical Removes numbers
+#' @param ordinal    logical Removes ordinal superscripts
 #' @export
 #' @examples
 #' \dontrun{
 #' clearPt(texto)
 #' }
-clearPt<-function(x,lower=T,stopwords=T,accent=T,punctuation=T,whitespace=T,numbers=T,ordinal=T){
+clearPt<-function(string,lower=T,stopwords=T,accent=T,punctuation=T,whitespace=T,numbers=T,ordinal=T){
   if (lower)
     x<-tolower(x)
   if (stopwords)
     x<=tm::removeWords(x,tm::stopwords(kind="pt"))
   if (accent)
-    x<-stringi::stri_trans_general(x,"Latin-ASCII")
+    x<-abjutils::rm_accent(x)
   if (punctuation)
-    x = str_replace_all(x,"[[:punct:]]", "")
+    x = stringi::stri_replace_all_regex(x,"[[:punct:]]", "")
   if (whitespace) {
-    x = str_replace_all(x,"\\s+", " ")
+    x = stringi::stri_replace_all_regex(x,"\\s+", " ")
   }
   if(numbers)
-    x<-str_replace_all(x,"[[:digit:]]","")
+    x<-stringi::stri_replace_all_regex(x,"[[:digit:]]","")
   if (ordinal)
-    x<-str_replace_all(x,"(\u00ba|\u00aa)","")
+    x<-stringi::stri_replace_all_regex(x,"(\u00ba|\u00aa)","")
   
   return(x)
 }

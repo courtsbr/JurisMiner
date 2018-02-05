@@ -6,5 +6,5 @@
 \alias{jurisMiner-package}
 \title{\code{jurisMiner} package}
 \description{
-Text mining of Brazilian judicial decision
+Text mining of Brazilian judicial decisions
 }

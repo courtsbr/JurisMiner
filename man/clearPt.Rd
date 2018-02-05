@@ -4,37 +4,31 @@
 \alias{clearPt}
 \title{Function clearPt}
 \usage{
-clearPt(x, lower = T, stopwords = T, accent = T, punctuation = T,
+clearPt(string, lower = T, stopwords = T, accent = T, punctuation = T,
   whitespace = T, numbers = T, ordinal = T)
 }
 \arguments{
-\item{x}{object to submitted to translation and removals.}
+\item{string}{object to be submitted to conversion and removals.}
 
-\item{lower}{logical: Translate to lower case.}
+\item{lower}{logical Convert to lower case.}
 
-\item{stopwords}{logial: Removes portuguese-BR stopwords.}
+\item{stopwords}{logial Removes portuguese-BR stopwords.}
 
-\item{accent}{logial: Encode to ASCII so that it removes all accents.}
+\item{accent}{logial remove all diacritics}
 
-\item{punctuation}{logical: Romoves punctuation.}
+\item{punctuation}{logical Romoves punctuation.}
 
-\item{whitespace}{logical: Remove whitespaces}
+\item{whitespace}{logical Remove whitespaces}
 
-\item{numbers}{logical: Removes numbers}
+\item{numbers}{logical Removes numbers}
 
-\item{ordinal}{logical: Remover indicadores de ordinais}
+\item{ordinal}{logical Removes ordinal superscripts}
 }
 \description{
-Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and translate to lower case.
+Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and convert to lower case.
 }
 \examples{
 \dontrun{
 clearPt(texto)
 }
 }
-\keyword{accent,}
-\keyword{clean,}
-\keyword{lower.}
-\keyword{punctuation,}
-\keyword{stopwords,}
-\keyword{tranlation,}
