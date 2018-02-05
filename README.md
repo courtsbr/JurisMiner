@@ -29,7 +29,6 @@ After downloading an opinion (acórdão) from high court and read the text to R,
 ```r
 ## Inspect the word related to the decision of an appeal:
 provimento<-pt_kwic(opinions,docnames, keyword="provimento")
-#> Error in pt_kwic(opinions, docnames, keyword = "provimento"): objeto 'docnames' não encontrado
 ```
 
 Besides inspecting, you can automate the classification of the decisions according to whether the court reversed (provimento) or affirmed the lower court decision (desproveu):
@@ -37,7 +36,6 @@ Besides inspecting, you can automate the classification of the decisions accordi
 
 ```r
 decision<-sg_decision(opinions,docnames,keyword="provimento")
-#> Error in pt_kwic(string, docname, keyword, type = "coll", before = 9, : objeto 'docnames' não encontrado
 ```
 
 

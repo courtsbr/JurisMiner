@@ -31,14 +31,14 @@ devtools::install_github("courtsbr/JurisMiner")
 
 After downloading an opinion (acórdão) from high court and read the text to R, you can inspect words in context and mine relevant information. 
 
-```{r ex1}
+```{r ex1, eval=FALSE}
 ## Inspect the word related to the decision of an appeal:
 provimento<-pt_kwic(opinions,docnames, keyword="provimento")
 ```
 
 Besides inspecting, you can automate the classification of the decisions according to whether the court reversed (provimento) or affirmed the lower court decision (desproveu):
 
-```{r ex2 }
+```{r ex2, eval=FALSE}
 decision<-sg_decision(opinions,docnames,keyword="provimento")
 ```
 
