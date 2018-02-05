@@ -4,7 +4,7 @@
 \alias{pt_kwic}
 \title{Keyword in context for Portuguese texts}
 \usage{
-pt_kwic(string, docname = NULL, keyword = NULL, type = c("coll", "regex"),
+pt_kwic(string, docname = NULL, keyword = NULL, type = "coll",
   before = 5, after = 5, unite = FALSE)
 }
 \arguments{

@@ -1,4 +1,4 @@
-#' @export
+
 ifs<-function(x,y){
   for(i in 1:length(y)){
     x<-ifelse(stringi::stri_detect_regex(x,y[[i]][1]),y[[i]][2],x)
@@ -7,7 +7,6 @@ ifs<-function(x,y){
 }
 
 
-#' @export
 make_pattern<-function(string){
 
 list_pattern<-list(c("a","(a|\u00e1|\u00e0|\u00e3)"),
