@@ -6,14 +6,7 @@ output:
 
 [![Build Status](https://travis-ci.org/courtsbr/JurisMiner.svg?branch=master)](https://travis-ci.org/courtsbr/JurisMiner)
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+
 # JurisMiner
 
 The goal of JurisMiner is to manipulate judicial decisions texts from Brazilian courts. This package must be used after you downloaded the data using [esaj](https://github.com/courtsbr/esaj) package.
@@ -22,7 +15,8 @@ The goal of JurisMiner is to manipulate judicial decisions texts from Brazilian 
 
 You can install JurisMiner from github with:
 
-```{r gh-installation, eval = FALSE}
+
+```r
 # install.packages("devtools")
 devtools::install_github("courtsbr/JurisMiner")
 ```
@@ -31,15 +25,19 @@ devtools::install_github("courtsbr/JurisMiner")
 
 After downloading an opinion (acórdão) from high court and read the text to R, you can inspect words in context and mine relevant information. 
 
-```{r ex1}
+
+```r
 ## Inspect the word related to the decision of an appeal:
 provimento<-pt_kwic(opinions,docnames, keyword="provimento")
+#> Error in pt_kwic(opinions, docnames, keyword = "provimento"): objeto 'docnames' não encontrado
 ```
 
 Besides inspecting, you can automate the classification of the decisions according to whether the court reversed (provimento) or affirmed the lower court decision (desproveu):
 
-```{r ex2 }
+
+```r
 decision<-sg_decision(opinions,docnames,keyword="provimento")
+#> Error in pt_kwic(string, docname, keyword, type = "coll", before = 9, : objeto 'docnames' não encontrado
 ```
 
 
