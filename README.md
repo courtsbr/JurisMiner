@@ -1,8 +1,3 @@
----
-output:
-  github_document:
-    html_preview: false
---
 
 [![Build Status](https://travis-ci.org/courtsbr/JurisMiner.svg?branch=master)](https://travis-ci.org/courtsbr/JurisMiner)
 
