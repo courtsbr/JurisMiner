@@ -1,23 +1,28 @@
 Package: JurisMiner
 Type: Package
-Date: 2017-05-16
-Title: Manipulação de decisões do TJSP
+Date: 2018-02-04
+Title: Text mining Brazilian judicial decisions
 Version: 0.1.0
 Author: José de Jesus Filho
 Maintainer: The package maintainer <jjesusfilho@gmail.com>
-Description: Functions to extract and manipulate texts of judicial decisions.
-    License: License: MIT + file LICENSE
+URL: https://github.com/courtsbr/JurisMiner
+Description: The Brazilian Jurimetrics Association (ABJ in Portuguese,
+  see <http://www.abjur.org.br/en/> for more information) is a non-profit
+  organization which aims to investigate and promote the use of
+  statistics and probability in the study of Law and its institutions.
+  This packages has useful functions to mine judicial decisions.
+License: License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 2.10),
-    quanteda,
-    tm,
-    stringr,
-    stringi
 Imports:
-    quanteda,
     tm,
     stringr,
-    stringi
+    stringi,
+    dplyr,
+    magrittr,
+    tibble,
+    tidyr,
+    purrr
 RoxygenNote: 6.0.1

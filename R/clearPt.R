@@ -34,7 +34,7 @@ clearPt<-function(x,lower=T,stopwords=T,accent=T,punctuation=T,whitespace=T,numb
   if(numbers)
     x<-str_replace_all(x,"[[:digit:]]","")
   if (ordinal)
-    x<-str_replace_all(x,"(º|ª)","")
+    x<-str_replace_all(x,"(\u00ba|\u00aa)","")
   
   return(x)
 }
