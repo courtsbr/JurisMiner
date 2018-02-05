@@ -3,17 +3,19 @@
 #' @param string a vector of texts from which to search for the keyword.
 #' @param docname a vector of docnames. If ommited, it defaults
 #'     to text1,text2, text3..., 
-#' @param keyword keyword to search for. For appeals, e.g, apela\u00e7\u00e3o and agravo,
+#' @param keyword keyword to search for. For appeals, e.g, apelação and agravo,
 #'     the keyword is "provimento". For writs, e.g, habeas corpus and "mandado
-#'    "seguran\u00e7a", the keyword should be "concedida" or "concedido", or just a
+#'    "segurança", the keyword should be "concedida" or "concedido", or just a
 #'    regex: "concedid*"
-#' @class procedural class, either "appeal" or "writ".
+#' @param class procedural class, either "appeal" or "writ".
 #' 
-#' @return a tibble with two columns: docname and decision: c("sim","n\u00e3o","parcial")
+#' @return a tibble with two columns: docname and decision: c("sim","não","parcial")
 #' @export
-#'
-#' @examples
-sg_decision<-function(string,docname,keyword,class="appeal"){
+#' @examples \dontrun{
+#' df<-sg_decision(string,docname,"provimento")
+#' }
+
+sg_decision <- function(string,docname,keyword,class="appeal"){
   
   df<-pt_kwic(string,docname,keyword,type="coll",before=9,after=9,unite=TRUE)
   

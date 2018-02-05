@@ -27,8 +27,9 @@
 #'
 #' @examples
 #' string<-c("A for\u00e7a do direito deve superar o direito da for\u00e7a.",
-#'     "Teu dever \u00e9 lutar pelo Direito, mas se um dia encontrares o Direito em conflito com a Justi\u00e7a,
-#'      luta pela Justi\u00e7a.")
+#' "Teu dever \u00e9 lutar pelo Direito, mas se um dia encontrares o Direito
+#'  em conflito com a Justi\u00e7a,
+#' luta pela Justi\u00e7a.")
 #' docname<-c("rui_barbosa","eduardo_couture")
 #' keyword<-"direito"
 #' df<-pt_kwic(string,docname,keyword)

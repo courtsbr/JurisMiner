@@ -17,8 +17,9 @@
 #' @import tm
 #' @export
 #' @examples
+#' \dontrun{
 #' clearPt(texto)
-
+#' }
 clearPt<-function(x,lower=T,stopwords=T,accent=T,punctuation=T,whitespace=T,numbers=T,ordinal=T){
   if (lower)
     x<-tolower(x)

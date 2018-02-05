@@ -28,7 +28,9 @@ clearPt(x, lower = T, stopwords = T, accent = T, punctuation = T,
 Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and translate to lower case.
 }
 \examples{
+\dontrun{
 clearPt(texto)
+}
 }
 \keyword{accent,}
 \keyword{clean,}
