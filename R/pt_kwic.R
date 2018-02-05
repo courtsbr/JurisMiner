@@ -61,6 +61,11 @@ pt_kwic <- function(string,
   
   df<-purrr::map2_dfr(string, docname,purrr::possibly(~{
     
+    ## It is safer to replace all A space character all  tab character, carriage return character,
+    ## new line character, vertical tab character, and form feed character
+    
+    .x<-stringi::stri_replace_all_regex(.x,"\\s+"," ")
+    
     ## Finds all the locations of the keyword
     if (type=="coll") {
       location<- .x %>% 
