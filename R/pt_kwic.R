@@ -39,7 +39,7 @@
 pt_kwic <- function(string,
                     docname = NULL,
                     keyword=NULL,
-                    type=c("coll","regex"),
+                    type="coll",
                     before = 5,
                     after = 5,
                     unite=FALSE) {
