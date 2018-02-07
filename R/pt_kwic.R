@@ -98,6 +98,11 @@ pt_kwic <-
       }
       dplyr::bind_cols(id_decision, location, pre, keyword, post)
     }, tibble::tibble()))
+    
+    df %<>%  ## this line of code corrects the mixing up of the columns when the keyword is not fount in the first string.
+      dplyr::select(id_decision,start,end,tidyselect::starts_with("pre"),keyword,tidyselect::starts_with("post"))
+    
+    
     if (unite == TRUE) {
       df %>% tidyr::unite(post,tidyselect::vars_select(names(.),tidyselect::starts_with("post")),sep = " ") %>%
         tidyr::unite(pre,tidyselect::vars_select(names(.),tidyselect::starts_with("pre")),sep = " ")

@@ -2,9 +2,9 @@
 % Please edit documentation in R/sg_decison.R
 \name{sg_decision}
 \alias{sg_decision}
-\title{Search for second instance judicial decision}
+\title{Classifies high courts opinions}
 \usage{
-sg_decision(string, id_decision, keyword, class = "appeal")
+sg_decision(string, id_decision, keyword, class = "appeal", type = "coll")
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}
@@ -18,13 +18,17 @@ to text1,text2, text3...,}
 regex: "concedid*"}
 
 \item{class}{procedural class, either "appeal" (default) or "writ".}
+
+\item{type}{It can be either "coll" for collation search or "regex".}
 }
 \value{
 a tbl with the id_decision, the keyword location (start and end), the keyword,
     the previous words, the posterior words, and the decision: c("sim","não","parcial")
 }
 \description{
-Search for second instance judicial decision
+This function will carry out a search for a keyword such as "affirm" or "reverse",
+  but in Portuguese, from hight courts opinions already read to R and do a first attempt 
+  to classify them
 }
 \examples{
 \dontrun{
