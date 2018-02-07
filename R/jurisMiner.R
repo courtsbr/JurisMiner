@@ -5,8 +5,7 @@
 #'
 #' @docType package
 #' @name jurisMiner
-#' @importFrom magrittr %>%
-#' @importFrom magrittr %<>%
+#' @importFrom magrittr %>% %<>%
 NULL
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines
