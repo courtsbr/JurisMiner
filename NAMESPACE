@@ -2,6 +2,7 @@
 
 export(clearPt)
 export(pt_kwic)
+export(rm_stopwords)
 export(sg_decision)
 importFrom(magrittr,"%<>%")
 importFrom(magrittr,"%>%")

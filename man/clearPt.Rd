@@ -4,8 +4,8 @@
 \alias{clearPt}
 \title{Function clearPt}
 \usage{
-clearPt(string, lower = T, stopwords = T, accent = T, punctuation = T,
-  whitespace = T, numbers = T, ordinal = T)
+clearPt(string, lower = T, stopwords = T, accent = T,
+  punctuation = T, whitespace = T, numbers = T, ordinal = T)
 }
 \arguments{
 \item{string}{object to be submitted to conversion and removals.}

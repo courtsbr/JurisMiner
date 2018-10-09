@@ -4,7 +4,8 @@
 \alias{sg_decision}
 \title{Classifies high courts opinions}
 \usage{
-sg_decision(string, id_decision, keyword, class = "appeal", type = "coll")
+sg_decision(string, id_decision, keyword, class = "appeal",
+  type = "coll")
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}

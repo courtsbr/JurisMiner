@@ -28,5 +28,6 @@ Imports:
     tibble,
     tidyr,
     purrr,
-    tidyselect
-RoxygenNote: 6.0.1
+    tidyselect,
+    progress
+RoxygenNote: 6.1.0
