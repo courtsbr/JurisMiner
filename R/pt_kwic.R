@@ -10,12 +10,8 @@
 #' @param string a vector of texts from which to search for the keyword.
 #' @param id_decision a vector of id_decisions. If ommited, it defaults
 #'     to text1,text2, text3..., 
-#' @param keyword keyword to search for
-#' @param type the type of keyword pattern matching: "coll" for
-#'      collation, which will look for words, ignoring
-#'      case differences and diacritics; "regex" for regular
-#'      expressions. Regex will also ignore case differences and
-#'      diacritics. Option "coll" is much faster than "regex".
+#' @param keyword you can provide a regex expression or a vector of regex
+#'     expressions.
 #' @param before Number of words before the keyword. Default is 5
 #' @param after Number of words after the keyword. Default is 5
 #' @param unite if FALSE, places every previous and posterior word in
@@ -37,77 +33,84 @@ pt_kwic <-
   function (string,
             id_decision = NULL,
             keyword = NULL,
-            type = "coll",
             before = 5,
             after = 5,
-            unite = FALSE)
+            unite = TRUE)
   {
     if (is.null(id_decision)) {
       id_decision <- paste0("text", 1:length(string))
     } else if (length(id_decision) == length(string)) {
       id_decision <- id_decision
     } else
-      stop("string and id_decision must have same length")
-    if (type == "coll") {
-      pattern <- keyword
-    } else {
-      pattern <- make_pattern(keyword)
-    }
-    df <- purrr::map2_dfr(string, id_decision, purrr::possibly( ~ {
-      .x <- stringi::stri_replace_all_regex(.x, "\\s+", " ")
-      if (type == "coll") {
-        location <- .x %>% stringi::stri_locate_all_coll(pattern, strength = 1L, locale = "pt_BR") %>%
+      stop("string and id_decision must have same lengths")
+
+    pattern <- make_pattern(keyword)
+    
+    future::plan("multiprocess")
+    
+    df <- furrr::future_map2_dfr(string, id_decision, purrr::possibly(~{
+
+        location <- .x %>%
+        stringi::stri_replace_all_regex("\\s+", " ") %>% 
+          stringi::stri_locate_all_regex(pattern) %>%
           magrittr::extract2(1) %>%
           tibble::as_tibble() %>%
-          dplyr::mutate(start = ifelse(start == 1, 2, start) %>% as.integer())
-      } else {
-        location <- .x %>% stringi::stri_locate_all_regex(pattern) %>%
-          magrittr::extract2(1) %>%
-          tibble::as_tibble() %>%
-          dplyr::mutate(start = ifelse(start == 1, 2, start) %>% as.integer())
-      }
-      post <-
+          dplyr::mutate(start = ifelse(start == 1, 2, start) %>%
+                          as.integer())
+     
+       post <-
         .x %>% stringi::stri_sub(location[[2]] + 2, nchar(.)) %>%
-        purrr::map( ~ stringr::word(.x, 1:after) %>% magrittr::set_names(paste0("post",
-                                                                                1:after)))
+        furrr::future_map( ~ stringr::word(.x, 1:after) %>%
+                             magrittr::set_names(paste0("post",1:after)))
+      
       post <- dplyr::bind_rows(!!!post)
       
-      previous <- .x %>% stringi::stri_sub(1, location[[1]]-2)
-      pre <- purrr::map2(previous, before, purrr::possibly( ~ {
+      previous <- .x %>% 
+        stringi::stri_sub(1, location[[1]]-2)
+      
+      pre <- furrr::future_map2(previous, before, purrr::possibly( ~ {
         pre_count <- stringi::stri_count_words(.x)
         if (pre_count < .y) {
           .y <- pre_count
         } else {
           .y <- .y
         }
-        stringr::word(.x,-.y:-1) %>% magrittr::set_names(paste0("pre",1:.y))
+        stringr::word(.x,-.y:-1) %>%
+          magrittr::set_names(paste0("pre",1:.y))
       }, tibble::tibble()))
       
       pre <- dplyr::bind_rows(!!!pre)
       
-      location %<>% dplyr::mutate(start = ifelse(start == 2,1, start) %>% as.integer())
+      location<-location %>% 
+        dplyr::mutate(start = ifelse(start == 2,1, start) %>%
+                        as.integer())
       
       keyword <-
         .x %>% stringi::stri_sub(location[[1]], location[[2]]) %>%
         tibble::tibble(keyword = .)
+      
       if (is.null(.y)) {
         id_decision <-
-          paste0("text", nrow(keyword)) %>% tibble::tibble(id_decision = .)
+          paste0("text", nrow(keyword)) %>%
+          tibble::tibble(id_decision = .)
       } else {
-        id_decision <- rep(.y, nrow(keyword)) %>% tibble::tibble(id_decision = .)
+        id_decision <- rep(.y, nrow(keyword)) %>%
+          tibble::tibble(id_decision = .)
       }
-      dplyr::bind_cols(id_decision, location, pre, keyword, post)
-    }, tibble::tibble()))
-    
-    
-    
+     df<- dplyr::bind_cols(id_decision, location, pre, keyword, post)
+    }, tibble::tibble())
+    )
+
     if (unite == TRUE) {
-      df %>% tidyr::unite(post,tidyselect::vars_select(names(.),tidyselect::starts_with("post")),sep = " ") %>%
-        tidyr::unite(pre,tidyselect::vars_select(names(.),tidyselect::starts_with("pre")),sep = " ")
-    } else {
-      return(df)
-    }
+     df <- df %>% 
+      tidyr::unite(pre,tidyselect::vars_select(names(.),tidyselect::starts_with("pre")),sep = " ") %>% 
+      tidyr::unite(post,tidyselect::vars_select(names(.),tidyselect::starts_with("post")),sep = " ") %>%
+      dplyr::select(id_decision,start,end,pre,keyword,post)
+     
   }
+  
+    df<-df %>% 
+      dplyr::filter(!is.na(keyword))
 
-
+}
 

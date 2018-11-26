@@ -4,8 +4,8 @@
 \alias{pt_kwic}
 \title{Keyword in context for Portuguese texts}
 \usage{
-pt_kwic(string, id_decision = NULL, keyword = NULL, type = "coll",
-  before = 5, after = 5, unite = FALSE)
+pt_kwic(string, id_decision = NULL, keyword = NULL, before = 5,
+  after = 5, unite = TRUE)
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}
@@ -13,13 +13,8 @@ pt_kwic(string, id_decision = NULL, keyword = NULL, type = "coll",
 \item{id_decision}{a vector of id_decisions. If ommited, it defaults
 to text1,text2, text3...,}
 
-\item{keyword}{keyword to search for}
-
-\item{type}{the type of keyword pattern matching: "coll" for
-collation, which will look for words, ignoring
-case differences and diacritics; "regex" for regular
-expressions. Regex will also ignore case differences and
-diacritics. Option "coll" is much faster than "regex".}
+\item{keyword}{you can provide a regex expression or a vector of regex
+expressions.}
 
 \item{before}{Number of words before the keyword. Default is 5}
 

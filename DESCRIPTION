@@ -2,9 +2,9 @@ Package: JurisMiner
 Type: Package
 Date: 2018-02-04
 Title: Text mining Brazilian judicial decisions
-Version: 0.1.0
+Version: 0.1.2.9000
 Authors@R: c(
-           person("José", "de Jesus Filho", email = "jjesusfilho@gmail.com",
+           person("José", "de Jesus Filho", email = "jjesus@abj.org.br",
            role = c("aut", "cre")),
            person(family = "Brazilian Jurimetrics Association", role = "cph"))
 Maintainer: The package maintainer <jjesusfilho@gmail.com>
@@ -19,7 +19,6 @@ Encoding: UTF-8
 LazyData: TRUE
 Depends: R (>= 2.10)
 Imports:
-    tm,
     abjutils,
     stringr,
     stringi,
@@ -29,5 +28,8 @@ Imports:
     tidyr,
     purrr,
     tidyselect,
-    progress
-RoxygenNote: 6.1.0
+    rlang,
+    progress,
+    future,
+    furrr
+RoxygenNote: 6.1.1

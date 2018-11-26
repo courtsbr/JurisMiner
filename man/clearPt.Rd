@@ -2,30 +2,31 @@
 % Please edit documentation in R/clearPt.R
 \name{clearPt}
 \alias{clearPt}
-\title{Function clearPt}
+\title{Optionally removes stopwords, numbers, ordinals, whitespaces, punctuation, diacritics, and convert to lower case.}
 \usage{
-clearPt(string, lower = T, stopwords = T, accent = T,
-  punctuation = T, whitespace = T, numbers = T, ordinal = T)
+clearPt(string, lower = TRUE, stopwords = TRUE, diacritics = TRUE,
+  punctuation = TRUE, squish = TRUE, numbers = TRUE,
+  ordinal = TRUE)
 }
 \arguments{
 \item{string}{object to be submitted to conversion and removals.}
 
-\item{lower}{logical Convert to lower case.}
+\item{lower}{logical Converts to lower case.}
 
 \item{stopwords}{logial Removes portuguese-BR stopwords.}
 
-\item{accent}{logial remove all diacritics}
+\item{diacritics}{logial remove all diacritics}
 
 \item{punctuation}{logical Romoves punctuation.}
 
-\item{whitespace}{logical Remove whitespaces}
+\item{squish}{logical applies stringr::str_squish}
 
 \item{numbers}{logical Removes numbers}
 
 \item{ordinal}{logical Removes ordinal superscripts}
 }
 \description{
-Optionally Removes stopwords, numbers, ordinals, whitespaces, punctuation, accents, and convert to lower case.
+Optionally removes stopwords, numbers, ordinals, whitespaces, punctuation, diacritics, and convert to lower case.
 }
 \examples{
 \dontrun{

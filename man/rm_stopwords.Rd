@@ -2,21 +2,18 @@
 % Please edit documentation in R/rm_stopwords.R
 \name{rm_stopwords}
 \alias{rm_stopwords}
-\title{Remove stopwords de decisões judiciais}
+\title{Remove Brazilian stopwords from strings}
 \usage{
-rm_stopwords(texto, stopwords)
+rm_stopwords(string, stopwords)
 }
 \arguments{
-\item{texto}{}
+\item{string}{character vector of strings}
 
-\item{stopwords}{}
+\item{stopwords}{word to be removed}
 }
 \value{
-Mesmo objeto texto com stopwords removidas
+Same object without stopwords
 }
 \description{
-Remove stopwords de decisões judiciais
-}
-\examples{
-
+Remove Brazilian stopwords from strings
 }
