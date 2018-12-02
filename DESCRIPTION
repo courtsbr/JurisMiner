@@ -31,5 +31,6 @@ Imports:
     rlang,
     progress,
     future,
-    furrr
+    furrr,
+    snakecase
 RoxygenNote: 6.1.1
