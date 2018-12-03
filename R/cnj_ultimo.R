@@ -43,7 +43,7 @@ cnj_ultimo <- function(x, ano, nivel, uf, distribuidor, funcao) {
     ## o último processo é menor que y.
     
     soma <-
-      JurisMiner::cnj_sequencial(intervalo[1], intervalo[2], ano, nivel, uf, distribuidor) %>%
+      cnj_sequencial(intervalo[1], intervalo[2], ano, nivel, uf, distribuidor) %>%
       funcao(temporario) %>%
       purrr::map_dbl(is.null) %>% ## Eu usei NULL porque a requisição para o DF retorna nulo,
       # mas isso não se aplica a outros processos
