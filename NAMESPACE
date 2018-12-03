@@ -3,6 +3,7 @@
 export(classify_appeal)
 export(clearPt)
 export(cnj_sequencial)
+export(cnj_ultimo)
 export(pt_kwic)
 export(rm_stopwords)
 importFrom(magrittr,"%<>%")
