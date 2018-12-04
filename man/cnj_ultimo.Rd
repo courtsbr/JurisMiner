@@ -4,24 +4,26 @@
 \alias{cnj_ultimo}
 \title{Encontra a quantidade de processos distribuídos numa unidade judiciária.}
 \usage{
-cnj_ultimo(x, ano, nivel, uf, distribuidor, funcao)
+cnj_ultimo(x, ano, nivel, uf, distribuidor, funcao, expr = "is.null")
 }
 \arguments{
 \item{x}{Qualquer inteiro que seguramente é superior ao número de processos distribuídos}
 
 \item{ano}{Indicar o ano em questão}
 
-\item{nivel}{nível do judiciário}
+\item{nivel}{Nível do judiciário}
 
-\item{uf}{unidade federativa.}
+\item{uf}{Unidade federativa.}
 
-\item{distribuidor}{código do distribuídor. Encontrar no data-raw.}
+\item{distribuidor}{Código do distribuídor. Encontrar no data-raw.}
 
 \item{funcao}{Função a ser aplicada para baixar: baixar_cpopg, baixar_processo, etc.}
+
+\item{expr}{Expressão a ser avaliada. A expressão deve retornar TRUE para processos
+não encontrados. Em São Paulo, o tamanho deve ser menor que 86K, no DF, a resposta NULL.}
 }
 \value{
-Quantidade máxima aproximada de processos distribuídos. Pode haver um erro, para cima,
-    de cinco processos.
+Quantidade máxima aproximada de processos distribuídos. Pode haver um pequeno erro
 }
 \description{
 Encontra a quantidade de processos distribuídos numa unidade judiciária.
