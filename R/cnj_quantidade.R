@@ -1,35 +1,36 @@
 #' Encontra a quantidade de processos distribuídos numa unidade judiciária.
 #'
-#' @param x Qualquer inteiro que seguramente é superior ao número de processos distribuídos
+#' @param fim Qualquer inteiro que seguramente é superior ao número de processos distribuídos
 #' @param ano Indicar o ano em questão
 #' @param nivel Nível do judiciário
 #' @param uf Unidade federativa.
 #' @param distribuidor Código do distribuídor. Encontrar no data-raw.
 #' @param funcao Função a ser aplicada para baixar: baixar_cpopg, baixar_processo, etc.
-#' @param expr Expressão a ser avaliada. A expressão deve retornar TRUE para processos
-#'     não encontrados. Em São Paulo, o tamanho deve ser menor que 86K, no DF, a resposta NULL.
+#' @param expr Expressão a ser avaliada. No caso de São Paulo, eu criei uma função
+#'      interna chamada `sp_vazio`, que verifica se o tamanho do arquivo é menor que 90Mb.
 #'
 #' @return Quantidade máxima aproximada de processos distribuídos. Pode haver um pequeno erro
 #' @export
 #'
 #' @examples
-cnj_ultimo <-
-  function(x,
+cnj_quantidade <-
+  function(fim,
+           inicio=0,
            ano,
            nivel,
            uf,
            distribuidor,
            funcao,
-           expr = "is.null") {
+           expr = "sp_vazio") {
     ## Para encontrar o maior número do processo do ano, eu usei a lógica da busca binária.
-    ## x pode ser qualquer número grande o bastante para ser superior ao número total de processos
+    ## fim pode ser qualquer número grande o bastante para ser superior ao número total de processos
     ## distribuídos.
     
-    y <- x / 2 ## Divido por dois para iniciar a busca binária.
+    inicio <- mean(c(inicio,fim)) ## Calculo a média, mas não vejo necessidade de arrendondar.
     
     # O loop abaixo faz requisição à la busca binária. Pode haver uma pequena diferença de 2.
     
-    while (`-`(x, y) > 2) {
+    while (`-`(fim, inicio) > 2) {
       # Todas as funções para baixar htmls dos processos, de todos os pacotes,
       # possuem um argumento para o vetor de processos (ids) e outro para o
       # diretório ou path. Assim, criamos um diretorio temporário para guardar
@@ -37,17 +38,17 @@ cnj_ultimo <-
       
       temporario <- tempdir()
       
-      ## Criamos um intervalo de três números em torno de y 
+      ## Criamos um intervalo de cinco números em torno de y 
       ## para assegurar que ao menos um deles existirá caso o último seja
       ## superior ou igual a y.
       
-      intervalo <- round(y+-1:1) %>%
+      intervalo <- round(inicio + -2:2) %>%
         range()
       
       ## aqui eu uso a função cnj_sequencial para criar a numeracao conforme o CNJ,
-      ## aplico a função para baixar e verifico se os três são simultaneamente nulos,
-      ## somando os objetos lógicos. Se a soma for três, ou seja, TRUE, TRUE, TRUE,
-      ## o último processo é menor que y.
+      ## aplico a função para baixar e verifico se os cinco são simultaneamente nulos,
+      ## somando os objetos lógicos. Se a soma for cinco, ou seja, TRUE, TRUE, TRUE, TRUE, TRUE
+      ## o último processo é menor que inicio.
       
       soma <-
         cnj_sequencial(intervalo[1], intervalo[2], ano, nivel, uf, distribuidor) %>%
@@ -58,22 +59,22 @@ cnj_ultimo <-
       
       unlink(temporario) ## manda o diretório pro espaço.
       
-      ## Se y for maior que o último processo, substituímos y atual pelo y anterior,
-      ## e x se torna o atual y, isto é a mediana entre y e x.
-      ## Se o último for maior que y, x é preservado e y passa a ser
-      ## a mediana entre y e x.
+      ## Se inicio for maior que o último processo, substituímos inicio atual pelo y anterior,
+      ## e fim se torna o atual inicio, isto é a média entre inicio e fim.
+      ## Se o último for maior que inicio, fim é preservado e inicio passa a ser
+      ## a média entre inicio e fim.
       
-      if (soma == 3) {
-        y <- y - (x - y)
+      if (soma == 5) {
+        inicio <- inicio - (fim - inicio)
         
-        x <- median(y:x)
+        fim <- mean(c(inicio,fim))
         
       } else {
-        y <- median(y:x)
+        inicio <- mean(c(inicio,fim))
         
       }
       
     }
     
-    return(y)
+    return(inicio)
   }
