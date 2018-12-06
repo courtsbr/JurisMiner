@@ -53,7 +53,7 @@ cnj_ultimo <-
         cnj_sequencial(intervalo[1], intervalo[2], ano, nivel, uf, distribuidor) %>%
         funcao(temporario) %>%
         purrr::map_dbl(eval(parse(text = expr))) %>% ## Eu usei NULL como padrão porque a requisição para o DF retorna nulo,
-        # mas isso não se aplica a outros processos.
+        # mas isso não se aplica a outros tribunais.
         sum()
       
       unlink(temporario) ## manda o diretório pro espaço.

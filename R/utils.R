@@ -46,3 +46,9 @@ make_pattern <- function(string) {
     stringr::str_c("(", .) %>% 
    stringi::stri_c("(?i)", .)
 }
+
+
+sp_vazio <- function(x){
+  file.size(x) %>% 
+    `<`(92160)
+}

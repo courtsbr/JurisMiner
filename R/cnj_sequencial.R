@@ -3,7 +3,7 @@
 #' @param inicio integer 
 #' @param fim   integer
 #' @param ano   year
-#' @param nivel level of the judicial system
+#' @param nivel integer
 #' @param uf  federative unity.
 #' @param distribuidor code of the court.
 #'

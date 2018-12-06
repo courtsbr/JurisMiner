@@ -13,7 +13,7 @@ cnj_sequencial(inicio, fim, ano, nivel, uf, distribuidor)
 
 \item{ano}{year}
 
-\item{nivel}{level of the judicial system}
+\item{nivel}{integer}
 
 \item{uf}{federative unity.}
 
