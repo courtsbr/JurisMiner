@@ -32,5 +32,6 @@ Imports:
     progress,
     future,
     furrr,
-    snakecase
+    snakecase,
+    lubridate
 RoxygenNote: 6.1.1
