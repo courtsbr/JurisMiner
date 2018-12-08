@@ -7,7 +7,6 @@
 #' @return same data.frame with a new column called decision.
 #' @export
 #'
-#' @examples
 
 classify_appeal <- function(x, text, decision) {
   input <- rlang::enexpr(text)

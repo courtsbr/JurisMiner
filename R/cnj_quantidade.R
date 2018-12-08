@@ -24,7 +24,6 @@
 #' @return Quantidade máxima aproximada de processos distribuídos. 
 #' @export
 #'
-#' @examples
 cnj_quantidade <-
   function(fim,
            inicio=0,
