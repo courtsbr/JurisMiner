@@ -37,22 +37,24 @@ cnj_quantidade <-
     ## fim pode ser qualquer número grande o bastante para ser superior ao número total de processos
     ## distribuídos.
     
-    inicio <- mean(c(inicio,fim)) ## Calculo a média, mas não vejo necessidade de arrendondar.
     
     # O loop abaixo faz requisição à la busca binária. Pode haver uma pequena diferença de 2.
     
     while (`-`(fim, inicio) > 2) {
+      inicio <- mean(c(inicio,fim)) ## Calculo a média, mas não vejo necessidade de arrendondar.
+      
+      
       # Todas as funções para baixar htmls dos processos, de todos os pacotes,
       # possuem um argumento para o vetor de processos (ids) e outro para o
       # diretório ou path. Assim, criamos um diretorio temporário para guardar
       # os arquivos:
+      
       
       temporario <- tempdir()
       
       ## Criamos um intervalo de cinco números em torno de y 
       ## para assegurar que ao menos um deles existirá caso o último seja
       ## superior ou igual a y.
-      
       intervalo <- round(inicio + -2:2) %>%
         range()
       
