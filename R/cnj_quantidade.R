@@ -82,9 +82,6 @@ cnj_quantidade <-
         
         fim <- mean(c(inicio,fim))
         
-      } else {
-        inicio <- mean(c(inicio,fim))
-        
       }
       
     }
