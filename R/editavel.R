@@ -24,8 +24,9 @@ editavel <- function(
 ) {
 
   col <- rlang::enexpr(coluna)
-  dplyr::count(x,eval(col), sort=TRUE) %>%
-    dplyr::mutate(acao=acao) %>%
+
+  dplyr::count(x,rlang::UQ(col), sort=TRUE) %>%
+    dplyr::mutate(acao=rlang::UQ(acao)) %>%
     DT::datatable(editable=TRUE,
                   extensions = 'Buttons',
                   options=list(
