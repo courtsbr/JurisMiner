@@ -37,8 +37,10 @@ a tbl with id_decision, keyword location (start and end), the keyword,
     separate column as a default.
 }
 \examples{
-string<-c("A força do direito deve superar o direito da força.",
-"Teu dever é lutar pelo Direito, mas se um dia encontrares o Direito
+string<-c("A força do direito deve 
+superar o direito da força.",
+"Teu dever é lutar pelo Direito,
+ mas se um dia encontrares o Direito
  em conflito com a Justiça,
 luta pela Justiça.")
 id_decision<-c("rui_barbosa","eduardo_couture")

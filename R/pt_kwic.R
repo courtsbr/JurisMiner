@@ -22,8 +22,10 @@
 #' @export
 #'
 #' @examples
-#' string<-c("A força do direito deve superar o direito da força.",
-#' "Teu dever é lutar pelo Direito, mas se um dia encontrares o Direito
+#' string<-c("A força do direito deve 
+#' superar o direito da força.",
+#' "Teu dever é lutar pelo Direito,
+#'  mas se um dia encontrares o Direito
 #'  em conflito com a Justiça,
 #' luta pela Justiça.")
 #' id_decision<-c("rui_barbosa","eduardo_couture")
@@ -46,9 +48,8 @@ pt_kwic <-
 
     pattern <- make_pattern(keyword)
     
-    future::plan("multiprocess")
-    
-    df <- furrr::future_map2_dfr(string, id_decision, purrr::possibly(~{
+
+    df <- purrr::map2_dfr(string, id_decision, purrr::possibly(~{
 
         location <- .x %>%
         stringi::stri_replace_all_regex("\\s+", " ") %>% 
@@ -60,7 +61,7 @@ pt_kwic <-
      
        post <-
         .x %>% stringi::stri_sub(location[[2]] + 2, nchar(.)) %>%
-        furrr::future_map( ~ stringr::word(.x, 1:after) %>%
+        purrr::map( ~stringr::word(.x, 1:after) %>%
                              magrittr::set_names(paste0("post",1:after)))
       
       post <- dplyr::bind_rows(!!!post)
@@ -68,7 +69,7 @@ pt_kwic <-
       previous <- .x %>% 
         stringi::stri_sub(1, location[[1]]-2)
       
-      pre <- furrr::future_map2(previous, before, purrr::possibly( ~ {
+      pre <- purrr::map2(previous, before, purrr::possibly( ~ {
         pre_count <- stringi::stri_count_words(.x)
         if (pre_count < .y) {
           .y <- pre_count

@@ -1,8 +1,8 @@
 Package: JurisMiner
 Type: Package
-Date: 2018-02-04
+Date: 2019-08-30
 Title: Text mining Brazilian judicial decisions
-Version: 0.1.2.9000
+Version: 0.1.3.9000
 Authors@R: c(
            person("José", "de Jesus Filho", email = "jjesus@abj.org.br",
            role = c("aut", "cre")),
@@ -29,10 +29,14 @@ Imports:
     tidyr,
     purrr,
     tidyselect,
-    rlang,
+    rlang (>= 0.1.2),
     progress,
     future,
     furrr,
     snakecase,
-    lubridate
+    lubridate,
+    quanteda,
+    DT
 RoxygenNote: 6.1.1
+Suggests: 
+    roxygen2

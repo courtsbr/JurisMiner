@@ -52,3 +52,8 @@ sp_vazio <- function(x){
   file.size(x) %>% 
     `<`(92160)
 }
+
+stj_vazio <- function(x){
+  file.size(x) %>% 
+    `<`(395000)
+}
