@@ -26,13 +26,13 @@ para reduzir o número de buscas.}
 \item{expr}{Expressão a ser avaliada. No caso de São Paulo, eu criei uma função
      interna chamada `sp_vazio`, que verifica se o tamanho do arquivo é menor que 90Mb.
 
- @details Essa função adata um procedimento heurístico para encontrar a quantidade de 
+ @details Essa função adota um procedimento heurístico para encontrar a quantidade de 
      processos distribuídos numa unidade judiciária em um determinado ano. 
      À moda de busca binária, ela vai iniciar requisições a partir da média entre 
-     o ínicio e o fim indicados por você. Ela vai vai fazer cinco requisições por vez,
+     o ínicio e o fim indicados por você. Ela realiza dez requisições por vez,
      pois  pode haver uma sequência de processos não existentes. Como cada função para baixar 
      processos retorna um objeto distinto, você deve indicar uma expressão que retornará 
-     verdadeiro para casos de processos não existentes. Para São Palo, basta usar a função 
+     verdadeiro para casos de processos não existentes. Para São Paulo, basta usar a função 
      interna sp_vazio. Futuramente, incluirei outras expressões para outros TJs, 
      de modo que este parâmetro será obsoleto.}
 }
