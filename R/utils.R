@@ -57,3 +57,8 @@ stj_vazio <- function(x){
   file.size(x) %>% 
     `<`(395000)
 }
+
+trf1_vazio <- function(x){
+  file.size(x) %>% 
+    `<`(19000)
+}

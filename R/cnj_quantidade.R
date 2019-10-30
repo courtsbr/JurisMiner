@@ -40,7 +40,7 @@ cnj_quantidade <-
     
     # O loop abaixo faz requisição ao modo de busca binária. Pode haver uma pequena diferença de 2.
     
-    while (`-`(fim, inicio) > 2) {
+    while (`-`(fim, inicio) > 5) {
       inicio <- mean(c(inicio,fim)) ## Calculo a média, mas não vejo necessidade de arrendondar.
       
       
@@ -55,7 +55,7 @@ cnj_quantidade <-
       ## Criamos um intervalo de oito números em torno de y 
       ## para assegurar que ao menos um deles existirá caso o último seja
       ## superior ou igual a y.
-      intervalo <- round(inicio + -4:4) %>%
+      intervalo <- round(inicio + -20:20) %>%
         range()
       
       ## aqui eu uso a função cnj_sequencial para criar a numeracao conforme o CNJ,
@@ -65,7 +65,7 @@ cnj_quantidade <-
       
       soma <-
         cnj_sequencial(intervalo[1], intervalo[2], ano, segmento, uf, distribuidor) %>%
-        funcao(temporario) %>%
+        funcao(diretorio = temporario) %>%
         purrr::map_dbl(eval(parse(text = expr))) %>% ## Eu usei NULL como padrão porque a requisição para o DF retorna nulo,
         # mas isso não se aplica a outros tribunais.
         sum()
