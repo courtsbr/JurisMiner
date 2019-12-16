@@ -4,8 +4,16 @@
 \alias{cnj_quantidade}
 \title{Encontra a quantidade de processos distribuídos numa unidade judiciária.}
 \usage{
-cnj_quantidade(fim, inicio = 0, ano, segmento, uf, distribuidor, funcao,
-  expr = "sp_vazio")
+cnj_quantidade(
+  fim,
+  inicio = 0,
+  ano,
+  segmento,
+  uf,
+  distribuidor,
+  funcao,
+  expr = "sp_vazio"
+)
 }
 \arguments{
 \item{fim}{Qualquer inteiro que seguramente é superior ao número de processos distribuídos}

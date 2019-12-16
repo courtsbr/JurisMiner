@@ -3,7 +3,6 @@
 \docType{package}
 \name{jurisMiner}
 \alias{jurisMiner}
-\alias{jurisMiner-package}
 \title{\code{jurisMiner} package}
 \description{
 Text mining of Brazilian judicial decisions

@@ -4,8 +4,13 @@
 \alias{editavel}
 \title{Criar tabela para edição manual}
 \usage{
-editavel(x = NULL, coluna = NULL, acao = "     ",
-  tamanho_pagina = 100, destino = "./editavel.html")
+editavel(
+  x = NULL,
+  coluna = NULL,
+  acao = "     ",
+  tamanho_pagina = 100,
+  destino = "./editavel.html"
+)
 }
 \arguments{
 \item{x}{dataframe}

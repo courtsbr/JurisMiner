@@ -2,10 +2,14 @@
 % Please edit documentation in R/inicial_final.R
 \name{inicial_final}
 \alias{inicial_final}
-\title{Cria tibble com duas colunas de datas a partir para paralelização.}
+\title{Cria tibble com duas colunas de datas  para paralelização.}
 \usage{
-inicial_final(data_inicial = NULL, data_final = NULL,
-  intervalos = 10, formato = "\%d/\%m/\%Y")
+inicial_final(
+  data_inicial = NULL,
+  data_final = NULL,
+  intervalos = 10,
+  formato = "\%d/\%m/\%Y"
+)
 }
 \arguments{
 \item{data_inicial}{Data inicial no formato dd/mm/YYYY}
@@ -20,7 +24,7 @@ inicial_final(data_inicial = NULL, data_final = NULL,
 tibble
 }
 \description{
-Cria tibble com duas colunas de datas a partir para paralelização.
+Cria tibble com duas colunas de datas  para paralelização.
 }
 \examples{
 \dontrun{

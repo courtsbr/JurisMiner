@@ -4,9 +4,16 @@
 \alias{clearPt}
 \title{Optionally removes stopwords, numbers, ordinals, whitespaces, punctuation, diacritics, and convert to lower case.}
 \usage{
-clearPt(string, lower = TRUE, stopwords = TRUE, diacritics = TRUE,
-  punctuation = TRUE, squish = TRUE, numbers = TRUE,
-  ordinal = TRUE)
+clearPt(
+  string,
+  lower = TRUE,
+  stopwords = TRUE,
+  diacritics = TRUE,
+  punctuation = TRUE,
+  squish = TRUE,
+  numbers = TRUE,
+  ordinal = TRUE
+)
 }
 \arguments{
 \item{string}{object to be submitted to conversion and removals.}

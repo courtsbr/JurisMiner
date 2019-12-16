@@ -1,10 +1,10 @@
 Package: JurisMiner
 Type: Package
-Date: 2019-08-30
-Title: Text mining Brazilian judicial decisions
-Version: 0.1.3.9000
+Date: 2019-12-15
+Title: Mineração de textos dos tribunais brasilerios
+Version: 0.2.0.9000
 Authors@R: c(
-           person("José", "de Jesus Filho", email = "jjesus@abj.org.br",
+           person("José", "de Jesus Filho", email = "jjesus@consudata.org.br",
            role = c("aut", "cre")),
            person(family = "Brazilian Jurimetrics Association", role = "cph"))
 Maintainer: The package maintainer <jjesusfilho@gmail.com>
@@ -37,6 +37,6 @@ Imports:
     lubridate,
     quanteda,
     DT
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: 
     roxygen2

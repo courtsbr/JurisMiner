@@ -4,8 +4,14 @@
 \alias{pt_kwic}
 \title{Keyword in context for Portuguese texts}
 \usage{
-pt_kwic(string, id_decision = NULL, keyword = NULL, before = 5,
-  after = 5, unite = TRUE)
+pt_kwic(
+  string,
+  id_decision = NULL,
+  keyword = NULL,
+  before = 5,
+  after = 5,
+  unite = TRUE
+)
 }
 \arguments{
 \item{string}{a vector of texts from which to search for the keyword.}

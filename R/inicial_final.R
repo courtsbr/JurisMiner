@@ -1,4 +1,4 @@
-#' Cria tibble com duas colunas de datas a partir para paralelização.
+#' Cria tibble com duas colunas de datas  para paralelização.
 #'
 #' @param data_inicial Data inicial no formato dd/mm/YYYY
 #' @param data_final Data final no fomrato dd/mm/YYYY
