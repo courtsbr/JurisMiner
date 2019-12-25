@@ -25,7 +25,8 @@ tempo_movimentacao <- function(df,data = data){
     dplyr::mutate(anterior:=dplyr::lead(!!data),
                   decorrencia=lapso(anterior,!!data,unidade="dia"),
                   decorrencia_acumulada=tidyr::replace_na(decorrencia,0) %>% 
-                    rev() %>% cumsum() %>% rev())
+                    rev() %>% cumsum() %>% rev()) %>% 
+                  dplyr::ungroup()
   
   
 }

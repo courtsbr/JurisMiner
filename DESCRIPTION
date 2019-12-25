@@ -36,7 +36,8 @@ Imports:
     snakecase,
     lubridate,
     quanteda,
-    DT
+    DT,
+    purrrogress
 RoxygenNote: 7.0.2
 Suggests: 
     roxygen2
