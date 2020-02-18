@@ -15,4 +15,4 @@ if (getRversion() >= "2.15.1")
   utils::globalVariables(c(".", ".x", ".y", "x","y","post","pre", "ifs",
       "make_pattern", "string","text","decision","clean_string","texto",
       "stopwords","alternative","start","end","grupos","decorrencia",
-      "processo","anterior","row_id","parte"))
+      "processo","anterior","row_id","parte","cols"))

@@ -1,14 +1,12 @@
 #' Extrai o ano do número do cnj
 #'
 #' @param processo Número do processo
-#' @param tamanho 25, default, para números com ponto 
-#'     e hífein,  20, para números sem.
 #'
 #' @return  Vetor número com pontos
 #' @export
-extrair_ano <- function(processo, tamanho=c(25,20)) {
+extrair_ano <- function(processo) {
   
-  tamanho <- tamanho[1]
+  tamanho <- stringr::str_count(processo[1])
   
   if (tamanho==25){
     

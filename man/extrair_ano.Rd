@@ -4,13 +4,10 @@
 \alias{extrair_ano}
 \title{Extrai o ano do número do cnj}
 \usage{
-extrair_ano(processo, tamanho = c(25, 20))
+extrair_ano(processo)
 }
 \arguments{
 \item{processo}{Número do processo}
-
-\item{tamanho}{25, default, para números com ponto 
-e hífein,  20, para números sem.}
 }
 \value{
 Vetor número com pontos

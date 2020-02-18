@@ -13,7 +13,7 @@ filtrar_df(df = NULL, coluna = NULL, regex = NULL, n = 10)
 
 \item{regex}{Regex}
 
-\item{n}{Quantidade de grupo para dividir o data.frame}
+\item{n}{Quantidade de grupos para dividir o data.frame}
 }
 \value{
 Mesmo data.frame filtrado

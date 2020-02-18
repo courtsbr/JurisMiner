@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 # JurisMiner
 
-Este pacote possui um grande número de funções que eu vou criando a partir de scripts que se repetem durante a limpeza e organização de dados jurídicos.
+Este pacote é uma miscelânia de funções que eu fui criando a partir de rotinas que se repetem durante a limpeza e organização de dados jurídicos.
 
 ## Instalação
 

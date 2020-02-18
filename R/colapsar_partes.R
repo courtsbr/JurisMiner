@@ -20,7 +20,8 @@ colapsar_partes <- function(df,grupo,...,collapse="<br>"){
     dplyr::group_by(!!g) %>% 
     tidyr::chop(cols=parte)
   
-  df$parte <- purrr::map(df$parte,~stringr::str_c(.x,collapse=collapse))
+  df$parte <- purrr::map(df$parte,~stringr::str_c(.x,collapse=collapse)) %>% 
+              unlist()
   
   return(df)
 }

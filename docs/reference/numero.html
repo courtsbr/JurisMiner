@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates cnj sequence numbers — cnj_sequencial • JurisMiner</title>
+<title>Converte valor da ação para número ou qualquer outra string. — numero • JurisMiner</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Creates cnj sequence numbers — cnj_sequencial" />
-<meta property="og:description" content="Creates cnj sequence numbers" />
+<meta property="og:title" content="Converte valor da ação para número ou qualquer outra string. — numero" />
+<meta property="og:description" content="Converte valor da ação para número ou qualquer outra string." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,61 +105,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates cnj sequence numbers</h1>
-    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/cnj_sequencial.R'><code>R/cnj_sequencial.R</code></a></small>
-    <div class="hidden name"><code>cnj_sequencial.Rd</code></div>
+    <h1>Converte valor da ação para número ou qualquer outra string.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/numero.R'><code>R/numero.R</code></a></small>
+    <div class="hidden name"><code>numero.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates cnj sequence numbers</p>
+    <p>Converte valor da ação para número ou qualquer outra string.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cnj_sequencial</span>(<span class='no'>inicio</span>, <span class='no'>fim</span>, <span class='no'>ano</span>, <span class='no'>segmento</span>, <span class='no'>uf</span>, <span class='no'>distribuidor</span>)</pre>
+    <pre class="usage"><span class='fu'>numero</span>(<span class='no'>str</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>inicio</th>
-      <td><p>integer</p></td>
-    </tr>
-    <tr>
-      <th>fim</th>
-      <td><p>integer</p></td>
-    </tr>
-    <tr>
-      <th>ano</th>
-      <td><p>year</p></td>
-    </tr>
-    <tr>
-      <th>segmento</th>
-      <td><p>integer</p></td>
-    </tr>
-    <tr>
-      <th>uf</th>
-      <td><p>federative unity.</p></td>
-    </tr>
-    <tr>
-      <th>distribuidor</th>
-      <td><p>code of the court.</p></td>
+      <th>str</th>
+      <td><p>vetor de strings</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>vector of lawsuit numbers</p>
+    <p>mesmo vetor porém numérico.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>stj</span><span class='kw'>&lt;-</span><span class='fu'>cnj_sequencial</span>(<span class='fl'>0</span>,<span class='fl'>100</span>,<span class='fl'>2018</span>,<span class='fl'>3</span>,<span class='fl'>00</span>,<span class='fl'>0000</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

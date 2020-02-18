@@ -3,7 +3,7 @@
 #' @param df Data.frame
 #' @param coluna Decisões judiciais
 #' @param regex Regex
-#' @param n Quantidade de grupo para dividir o data.frame
+#' @param n Quantidade de grupos para dividir o data.frame
 #'
 #' @details Essa função é especialmente útil para dividir
 #'     data.frames muito grandes em grupos antes de 
