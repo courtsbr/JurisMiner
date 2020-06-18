@@ -16,8 +16,8 @@
 inicial_final <- function(data_inicial = NULL, data_final = NULL, intervalos=10, formato = "%d/%m/%Y"){
 
   tibble::tibble(datas=seq(lubridate::dmy(data_inicial),
-                           lubridate::dmy(data_final),1),
-                 grupos=dplyr::ntile(1:365,intervalos)) %>%
+                           lubridate::dmy(data_final),1)) %>% 
+                 dplyr::mutate(grupos=dplyr::ntile(n=intervalos)) %>%
     dplyr::group_split(grupos) %>%
     purrr::map(~dplyr::pull(.x,"datas") %>%
                  range()) %>%
