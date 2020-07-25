@@ -16,6 +16,6 @@ filtrar_df <- function(df = NULL,coluna = NULL, regex = NULL, n= 10){
   df %>% 
     dplyr::mutate(grupos = dplyr::ntile(n=n)) %>% 
     dplyr::group_split(grupos) %>% 
-    purrr::map_dfr(purrr::possibly(purrrogress::with_progress(~dplyr::filter(.x,stringr::str_detect({coluna},regex)))))
+    purrr::map_dfr(purrr::possibly(~dplyr::filter(.x,stringr::str_detect({coluna},regex))))
   
 }

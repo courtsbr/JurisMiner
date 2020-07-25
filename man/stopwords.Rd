@@ -4,7 +4,9 @@
 \name{stopwords}
 \alias{stopwords}
 \title{Common Brazilian stopwords}
-\format{string with stopwords}
+\format{
+string with stopwords
+}
 \usage{
 stopwords
 }

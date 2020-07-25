@@ -22,9 +22,8 @@ clean_string <- function(x, y) {
 #'
 rm_stopwords <- function(string, stopwords) {
   
-  future::plan("multiprocess")
-  furrr::future_map(string, ~{
+  purrr::map(string, ~{
     barra$tick()
     clean_string(.x, stopwords)
-  },.progress = TRUE)
+  })
 }

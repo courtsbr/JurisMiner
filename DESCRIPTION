@@ -31,13 +31,10 @@ Imports:
     tidyselect,
     rlang (>= 0.1.2),
     progress,
-    future,
-    furrr,
     snakecase,
     lubridate,
     quanteda,
-    DT,
-    purrrogress
-RoxygenNote: 7.0.2
+    DT
+RoxygenNote: 7.1.0
 Suggests: 
     roxygen2
