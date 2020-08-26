@@ -10,10 +10,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' inicial_final(data_inicial="01/01/2017", data_final="31/12/2017")
+#' agrupar_datas(data_inicial="01/01/2017", data_final="31/12/2017")
 #' }
 #'
-inicial_final <- function(data_inicial = NULL, data_final = NULL, intervalos=10, formato = "%d/%m/%Y"){
+agrupar_datas <- function(data_inicial = NULL, data_final = NULL, intervalos=10, formato = "%d/%m/%Y"){
 
   tibble::tibble(datas=seq(lubridate::dmy(data_inicial),
                            lubridate::dmy(data_final),1)) %>% 

@@ -4,9 +4,12 @@ Status](https://travis-ci.org/courtsbr/JurisMiner.svg?branch=master)](https://tr
 
 # JurisMiner
 
-Este pacote possui um grande número de funções que eu vou criando a
-partir de scripts que se repetem durante a limpeza e organização de
-dados jurídicos.
+Este pacote é uma miscelânia de funções que eu fui criando a partir de
+rotinas que se repetem durante a limpeza e organização de dados
+jurídicos.
+
+Por ser uma coletânia, algumas funções estão em inglês, outras em
+português, a depender do do humor do momento.
 
 ## Instalação
 
@@ -18,4 +21,9 @@ devtools::install_github("courtsbr/JurisMiner")
 ## Uso
 
 Sugiro ler o manual para aprender o funcionamento de cada uma das
-funções.
+funções. Algumas dependências não são automaticamente instaladas.
+Deverão ser instaladas pelo usuário conforme necessite usar funções que
+as usam.
+
+Há algumas funções que são particularmente úteis, como `br_gender`,
+`tempo_movimentacao` e `agrupar_datas`.

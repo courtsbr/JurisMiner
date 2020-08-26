@@ -26,6 +26,8 @@ knitr::opts_chunk$set(
 
 Este pacote é uma miscelânia de funções que eu fui criando a partir de rotinas que se repetem durante a limpeza e organização de dados jurídicos.
 
+Por ser uma coletânia, algumas funções estão em inglês, outras em português, a depender do do humor do momento.
+
 ## Instalação
 
 ```{r gh-installation, eval = FALSE}
@@ -35,7 +37,6 @@ devtools::install_github("courtsbr/JurisMiner")
 
 ## Uso
 
-Sugiro ler o manual para aprender o funcionamento de cada uma das funções. 
+Sugiro ler o manual para aprender o funcionamento de cada uma das funções. Algumas dependências não são automaticamente instaladas. Deverão ser instaladas pelo usuário conforme necessite usar funções que as usam.
 
-
-
+Há algumas funções que são particularmente úteis, como `br_gender`, `tempo_movimentacao` e `agrupar_datas`.

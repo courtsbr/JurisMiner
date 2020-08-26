@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converte valor da ação para número ou qualquer outra string. — numero • JurisMiner</title>
+<title>Convert to vector list that contains empty or NULL — jus_unlist • JurisMiner</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Converte valor da ação para número ou qualquer outra string. — numero" />
-<meta property="og:description" content="Converte valor da ação para número ou qualquer outra string." />
+<meta property="og:title" content="Convert to vector list that contains empty or NULL — jus_unlist" />
+<meta property="og:description" content="Convert to vector list that contains empty or NULL" />
 
 
 
@@ -111,29 +111,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converte valor da ação para número ou qualquer outra string.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/numero.R'><code>R/numero.R</code></a></small>
-    <div class="hidden name"><code>numero.Rd</code></div>
+    <h1>Convert to vector list that contains empty or NULL</h1>
+    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/jus_unlist.R'><code>R/jus_unlist.R</code></a></small>
+    <div class="hidden name"><code>jus_unlist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Converte valor da ação para número ou qualquer outra string.</p>
+    <p>Convert to vector list that contains empty or NULL</p>
     </div>
 
-    <pre class="usage"><span class='fu'>numero</span>(<span class='no'>str</span>)</pre>
+    <pre class="usage"><span class='fu'>jus_unlist</span>(<span class='kw'>list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>str</th>
-      <td><p>vetor de strings</p></td>
+      <th>list</th>
+      <td><p>List containing empty values</p></td>
+    </tr>
+    <tr>
+      <th>default</th>
+      <td><p>Default is NA_character_</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>mesmo vetor porém numérico.</p>
+    <p>Vector with the same length of the list</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

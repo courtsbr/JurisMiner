@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converte valor da ação para número ou qualquer outra string. — numero • JurisMiner</title>
+<title>Cria tibble com duas colunas de datas  para paralelização. — agrupar_datas • JurisMiner</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Converte valor da ação para número ou qualquer outra string. — numero" />
-<meta property="og:description" content="Converte valor da ação para número ou qualquer outra string." />
+<meta property="og:title" content="Cria tibble com duas colunas de datas  para paralelização. — agrupar_datas" />
+<meta property="og:description" content="Cria tibble com duas colunas de datas  para paralelização." />
 
 
 
@@ -111,30 +111,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converte valor da ação para número ou qualquer outra string.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/numero.R'><code>R/numero.R</code></a></small>
-    <div class="hidden name"><code>numero.Rd</code></div>
+    <h1>Cria tibble com duas colunas de datas  para paralelização.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/agrupar_datas.R'><code>R/agrupar_datas.R</code></a></small>
+    <div class="hidden name"><code>agrupar_datas.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Converte valor da ação para número ou qualquer outra string.</p>
+    <p>Cria tibble com duas colunas de datas  para paralelização.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>numero</span>(<span class='no'>str</span>)</pre>
+    <pre class="usage"><span class='fu'>agrupar_datas</span>(
+  <span class='kw'>data_inicial</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>data_final</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>intervalos</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+  <span class='kw'>formato</span> <span class='kw'>=</span> <span class='st'>"%d/%m/%Y"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>str</th>
-      <td><p>vetor de strings</p></td>
+      <th>data_inicial</th>
+      <td><p>Data inicial no formato dd/mm/YYYY</p></td>
+    </tr>
+    <tr>
+      <th>data_final</th>
+      <td><p>Data final no fomrato dd/mm/YYYY</p></td>
+    </tr>
+    <tr>
+      <th>intervalos</th>
+      <td><p>Número de intervalos de datas criados</p></td>
+    </tr>
+    <tr>
+      <th>formato</th>
+      <td><p>O padrão é dd/mm/YYYY, mas você pode especificar outro.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>mesmo vetor porém numérico.</p>
+    <p>tibble</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>agrupar_datas</span>(<span class='kw'>data_inicial</span><span class='kw'>=</span><span class='st'>"01/01/2017"</span>, <span class='kw'>data_final</span><span class='kw'>=</span><span class='st'>"31/12/2017"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

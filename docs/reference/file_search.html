@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Converte valor da ação para número ou qualquer outra string. — numero • JurisMiner</title>
+<title>Find text files that contains a pattern — file_search • JurisMiner</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Converte valor da ação para número ou qualquer outra string. — numero" />
-<meta property="og:description" content="Converte valor da ação para número ou qualquer outra string." />
+<meta property="og:title" content="Find text files that contains a pattern — file_search" />
+<meta property="og:description" content="Find text files that contains a pattern" />
 
 
 
@@ -111,29 +111,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Converte valor da ação para número ou qualquer outra string.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/numero.R'><code>R/numero.R</code></a></small>
-    <div class="hidden name"><code>numero.Rd</code></div>
+    <h1>Find text files that contains a pattern</h1>
+    <small class="dont-index">Source: <a href='https://github.com/courtsbr/JurisMiner/blob/master/R/file_search.R'><code>R/file_search.R</code></a></small>
+    <div class="hidden name"><code>file_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Converte valor da ação para número ou qualquer outra string.</p>
+    <p>Find text files that contains a pattern</p>
     </div>
 
-    <pre class="usage"><span class='fu'>numero</span>(<span class='no'>str</span>)</pre>
+    <pre class="usage"><span class='fu'>file_search</span>(<span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"R"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>str</th>
-      <td><p>vetor de strings</p></td>
+      <th>pattern</th>
+      <td><p>regex pattern</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>path</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>mesmo vetor porém numérico.</p>
+    <p>Vector of tile names</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Specially useful for changing dependencies inside R functions.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
