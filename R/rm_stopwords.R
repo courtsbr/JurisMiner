@@ -21,9 +21,10 @@ clean_string <- function(x, y) {
 #'
 #'
 rm_stopwords <- function(string, stopwords) {
-  
+  pb <- progress::progress_bar(total = length(string))
   purrr::map(string, ~{
-    barra$tick()
+    
+    pb$tick()
     clean_string(.x, stopwords)
   })
 }
