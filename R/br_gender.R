@@ -7,13 +7,12 @@
 #'
 br_gender <- function(nomes) {
   
-  `%>%` <- magrittr::`%>%`  
-  
-  input<-nomes %>% 
-    tibble::tibble(nomes = .) %>% 
+
+  input <- nomes %>% 
+    tibble::tibble(nomes=.) %>% 
     dplyr::mutate(primeiro_nome = stringr::str_extract(nomes,"\\w+"))
   
-  primeiro_nome<-unique(input$primeiro_nome)
+  primeiro_nome <- unique(input$primeiro_nome)
   
   
   url_f <-
@@ -22,7 +21,7 @@ br_gender <- function(nomes) {
       primeiro_nome,
       "&sexo=f"
     ) %>% 
-    purrr::map(~utils::URLencode(.x)) %>% 
+    purrr::map(URLencode) %>% 
     unlist()
   
   url_m <-
@@ -31,25 +30,25 @@ br_gender <- function(nomes) {
       primeiro_nome,
       "&sexo=m"
     ) %>% 
-    purrr::map(~utils::URLencode(.x)) %>% 
+    purrr::map(URLencode) %>% 
     unlist()  
   
   cf<-crul::Async$new(
     urls<-url_f
   )
   
-  resf<-cf$get()
+  resf <- cf$get()
   
   
-  cm<-crul::Async$new(
-    urls<-url_m
+  cm <- crul::Async$new(
+    urls <- url_m
   )
   
-  resm<-cm$get()
+  resm <- cm$get()
   
   
   
-  resf<- purrr::map(resf,~{
+  resf <- purrr::map(resf,~{
     .x$parse() %>% 
       stringr::str_match_all("(?:\\:)(\\d+)") %>%
       unlist() %>%
@@ -57,7 +56,7 @@ br_gender <- function(nomes) {
   }) %>% 
     unlist()
   
-  resm<- purrr::map(resm,~{
+  resm <- purrr::map(resm,~{
     .x$parse() %>% 
       stringr::str_match_all("(?:\\:)(\\d+)") %>%
       unlist() %>%
