@@ -35,7 +35,8 @@ Imports:
     snakecase,
     lubridate,
     httr,
-    vctrs
+    vctrs,
+    stringdist
 RoxygenNote: 7.1.1
 Suggests: 
     roxygen2,
