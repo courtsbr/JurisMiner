@@ -21,7 +21,7 @@ br_gender <- function(nomes) {
       primeiro_nome,
       "&sexo=f"
     ) %>% 
-    purrr::map(URLencode) %>% 
+    purrr::map(utils::URLencode) %>% 
     unlist()
   
   url_m <-
@@ -30,7 +30,7 @@ br_gender <- function(nomes) {
       primeiro_nome,
       "&sexo=m"
     ) %>% 
-    purrr::map(URLencode) %>% 
+    purrr::map(utils::URLencode) %>% 
     unlist()  
   
   cf<-crul::Async$new(
