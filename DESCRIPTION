@@ -37,7 +37,8 @@ Imports:
     httr,
     vctrs,
     stringdist,
-    utils
+    utils,
+    sys
 RoxygenNote: 7.1.1
 Suggests: 
     roxygen2,
