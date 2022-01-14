@@ -20,7 +20,7 @@ cnj_classe <- function(texto = NULL)
                `rsargs[]` = "C", `rsargs[]` = "N", `rsargs[]` = texto)
 
    conteudo <- httr::POST(url, body = body, encode = "form") %>%
-     httr::content(resposta)
+     httr::content()
 
   codigo <- conteudo %>%
              xml2::xml_find_all("//a/@onclick") %>%

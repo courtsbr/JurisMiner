@@ -23,7 +23,6 @@ Depends:
 Imports:
     abjutils,
     stringr,
-    stringi,
     dplyr,
     magrittr,
     tibble,
@@ -44,4 +43,7 @@ Suggests:
     roxygen2,
     quanteda,
     crul,
-    DT
+    DT,
+    xml2,
+    stringi
+
