@@ -45,5 +45,5 @@ Suggests:
     crul,
     DT,
     xml2,
-    stringi
-
+    stringi,
+    tokenizers

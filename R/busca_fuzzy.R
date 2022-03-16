@@ -11,30 +11,35 @@
 #'
 busca_fuzzy<-function(x,y){
   
-  `%>%` <- magrittr:: `%>%`  
-  
-  
-  x1 <- x %>% 
-    stringi::stri_trans_general("latin-ascii") %>% 
-    stringi::stri_trans_tolower() %>% 
-    stringi::stri_trim_both() %>% 
+  x1 <- x |> 
+    stringi::stri_trans_general("latin-ascii") |> 
+    stringi::stri_trans_tolower() |> 
+    stringi::stri_trim_both() |> 
     stringi::stri_replace_all_regex("\\s+","_")
   
-  y1 <- y %>% 
-    stringi::stri_trans_general("latin-ascii") %>% 
-    stringi::stri_trans_tolower() %>% 
-    stringi::stri_trim_both() %>% 
+  y1 <- y |> 
+    stringi::stri_trans_general("latin-ascii") |> 
+    stringi::stri_trans_tolower() |> 
+    stringi::stri_trim_both() |> 
     stringi::stri_replace_all_regex("\\s+","_")
   
   purrr::map(x1, ~{
     
-    a <- stringdist::stringdist(.x,y1)
+    if (is.na(.x)){
+      
+      d <- NA_character_
+      
+    } else {
+      a <- stringdist::stringdist(.x,y1, method = 'osa',weight = c(d = 1, i = .1, s = 1, t = 1))
+      
+      b <- which.min(a)
+      
+      d <- y[b]
+    }
     
-    b <- which.min(a)
+   d
     
-    d <- y[b]
-    
-  }) %>% 
+  }) |> 
     unlist()
   
 }
