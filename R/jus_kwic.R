@@ -19,3 +19,24 @@ jus_kwic <- function(x, nomes = names(x), regex, compact = FALSE, tbl = FALSE){
     purrr::when(compact ~ purrr::compact(.), ~.) |>
     purrr::when(tbl ~ tibble::tibble(id = names(.), trecho = .) |> tidyr::unnest(trecho), ~.)
 }
+
+
+
+
+#' junta trechos e colapsa em um único texto
+#'
+#' @param df Data.frame
+#' @param coluna coluna
+#'
+#' @return Mesmo data.frame com coluna colapsada
+#' @export
+#'
+chop_collapse <- function(df, coluna){
+  
+  coluna <- rlang::enexpr(coluna)
+  
+  df |>
+    tidyr::chop(!!coluna) |>
+    dplyr::mutate(!!coluna := purrr::map_chr(!!coluna, ~stringr::str_c(.x, collapse = "\n")))
+  
+}
