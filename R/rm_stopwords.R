@@ -21,10 +21,16 @@ clean_string <- function(x, y) {
 #'
 #'
 rm_stopwords <- function(string, stopwords) {
-  pb <- progress::progress_bar(total = length(string))
-  purrr::map(string, ~{
-    
-    pb$tick()
-    clean_string(.x, stopwords)
-  })
+  
+  stopwords <- stopwords %>%
+    paste0("\\b", ., "\\b", "|", collapse = "") %>%
+    stringr::str_replace("\\|$", ")") %>%
+    stringr::str_c("(", .)
+  
+  string <- stringi::stri_replace_all_regex(string, stopwords, "") %>%
+    stringr::str_trim() %>%
+    stringr::str_squish()
+  
+  return(string)
 }
+
