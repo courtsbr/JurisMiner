@@ -21,7 +21,8 @@ Retorna o lapso temporal na unidade especificada entre duas datas.
 }
 \details{
 Esta função é um mero wrapper das funções interval e time_length
-    do pacote lubridate. Ela considera as variações de ano, meses e dias.
+    do pacote lubridate. Ela considera as variações de 
+    ano, mes,semana, dia, hora, minuto e segundo.
 }
 \examples{
 lapso(data_inicial=as.Date("2018-01-01"),data_final=as.Date("2018-12-31"),unidade="mes")
