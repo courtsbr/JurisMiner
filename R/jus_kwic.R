@@ -17,7 +17,8 @@ jus_kwic <- function(x, nomes = names(x), regex, compact = FALSE, tbl = FALSE){
     purrr::map(~stringr::str_subset(.x, regex)) |>
     purrr::set_names(nomes) |>
     purrr::when(compact ~ purrr::compact(.), ~.) |>
-    purrr::when(tbl ~ tibble::tibble(id = names(.), trecho = .) |> tidyr::unnest(trecho), ~.)
+    purrr::when(tbl ~ tibble::tibble(id = names(.), trecho = .) |> 
+                  tidyr::unnest(trecho), ~.)
 }
 
 

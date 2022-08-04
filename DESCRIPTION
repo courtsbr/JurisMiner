@@ -30,13 +30,10 @@ Imports:
     purrr,
     tidyselect,
     rlang (>= 0.1.2),
-    progress,
-    snakecase,
     lubridate,
     httr,
     vctrs,
     stringdist,
-    utils,
     sys
 RoxygenNote: 7.2.1
 Suggests: 
@@ -46,4 +43,5 @@ Suggests:
     DT,
     xml2,
     stringi,
-    tokenizers
+    tokenizers,
+    pdftools
