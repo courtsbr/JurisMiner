@@ -2,7 +2,7 @@ Package: JurisMiner
 Type: Package
 Date: 2019-12-15
 Title: Mineração de textos dos tribunais brasilerios
-Version: 1.1.0
+Version: 1.1.0.9000
 Authors@R: c(
            person("José", "de Jesus Filho", email = "jjesus@consudata.org.br",
            role = c("aut", "cre")),
@@ -38,7 +38,7 @@ Imports:
     stringdist,
     utils,
     sys
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Suggests: 
     roxygen2,
     quanteda,
