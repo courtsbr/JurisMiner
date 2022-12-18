@@ -16,15 +16,13 @@
 agrupar_datas <- function(data_inicial = NULL, data_final = NULL, intervalos=10, formato = "%d/%m/%Y"){
 
   tibble::tibble(datas=seq(lubridate::dmy(data_inicial),
-                           lubridate::dmy(data_final),1)) %>% 
-                 dplyr::mutate(grupos=dplyr::ntile(n=intervalos)) %>%
-    dplyr::group_split(grupos) %>%
-    purrr::map(~dplyr::pull(.x,"datas") %>%
-                 range()) %>%
-    do.call(rbind,.) %>%
-    tibble::as_tibble() %>%
-    purrr::set_names(c("data_inicial","data_final")) %>%
-    dplyr::mutate_all(list(~as.Date(.,origin='1970-01-01') %>%
+                           lubridate::dmy(data_final),1)) |> 
+    dplyr::mutate(grupos=dplyr::ntile(n=intervalos)) |> 
+    dplyr::group_split(grupos) |> 
+    purrr::map_dfr(~dplyr::pull(.x,"datas") |> 
+                     range() |> 
+                     setNames(c("data_inicial","data_final"))) |> 
+    dplyr::mutate_all(list(~as.Date(.,origin='1970-01-01') |> 
                              format(formato)))
 
 }
