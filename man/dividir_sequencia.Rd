@@ -4,12 +4,14 @@
 \alias{dividir_sequencia}
 \title{Divide sequência em n grupos}
 \usage{
-dividir_sequencia(sequencia, n)
+dividir_sequencia(sequencia, g = NULL, n = NULL)
 }
 \arguments{
 \item{sequencia}{Sequência}
 
-\item{n}{Número de grupos}
+\item{g}{Número de grupos.}
+
+\item{n}{Alternativamente número de elementos por grupo.}
 }
 \value{
 Lista
