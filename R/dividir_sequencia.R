@@ -10,6 +10,12 @@
 #' dividir_sequencia(1:100, 5)
 dividir_sequencia <- function(sequencia, g = NULL, n = NULL){
   
+   if (!is.atomic(sequencia)){
+       
+      stop("sequencia deve ser um vetor (atômico)")
+
+   }
+
   if (!is.null(g) & !is.null(n)){
     
     stop("Você deve informar g ou n, nunca os dois.")
