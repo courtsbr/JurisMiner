@@ -12,18 +12,18 @@ dividir_sequencia <- function(sequencia, g = NULL, n = NULL){
   
    if (!is.atomic(sequencia)){
        
-      stop("sequencia deve ser um vetor (atômico)")
+      stop("sequencia deve ser um vetor (at\u00F4mico)")
 
    }
 
   if (!is.null(g) & !is.null(n)){
     
-    stop("Você deve informar g ou n, nunca os dois.")
+    stop("Voc\u00EA deve informar g ou n, nunca os dois.")
   }
   
   if (is.null(g) & is.null(n)){
     
-    stop("Você tem de informar g ou n")
+    stop("Voc\u00EA tem de informar g ou n")
   }
   
  if (!is.null(g)){

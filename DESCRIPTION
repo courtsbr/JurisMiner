@@ -1,6 +1,6 @@
 Package: JurisMiner
 Type: Package
-Date: 2019-12-15
+Date: 2023-06-20
 Title: Mineração de textos dos tribunais brasilerios
 Version: 1.2.0
 Authors@R: c(
@@ -44,4 +44,6 @@ Suggests:
     stringi,
     tokenizers,
     pdftools,
-    openxlsx
+    openxlsx,
+    openai,
+    glue
