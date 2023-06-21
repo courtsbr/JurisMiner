@@ -4,12 +4,12 @@
 \alias{resumir_inteiro_teor}
 \title{Resume inteiro teor de decisões judiciais}
 \usage{
-resumir_inteiro_teor(x, model = "gpt-3.5-turbo-16k", temperatura = 0)
+resumir_inteiro_teor(x, modelo = "gpt-3.5-turbo-16k", temperatura = 0)
 }
 \arguments{
 \item{x}{Vetor de decisões}
 
-\item{model}{Modelo}
+\item{modelo}{Modelo}
 
 \item{temperatura}{Grau de aleatoriedade. Padrão zero.}
 }
