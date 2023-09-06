@@ -53,7 +53,7 @@ corpo <- glue::glue('
     xml2::xml_text()
   
   dsc_glossario <-  item |> 
-    xml2::xml_find_all(".//dscGlossario/p") |> 
+    xml2::xml_find_all(".//dscGlossario") |> 
     xml2::xml_text()
   
   tibble::tibble(cod_item, cod_item_pai, nome, dsc_glossario)
