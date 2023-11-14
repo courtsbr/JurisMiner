@@ -1,6 +1,6 @@
-#' Submete decisões judiciais à API da OPENAI e obtêm os resultados em json.
+#' Submete decisões judiciais à  API da OPENAI e obtêm os resultados em json.
 #'
-#' @param x Decisão judicial
+#' @param x Decisisões judicial
 #' @param destaques Vetor de palavras ou expressões a destacar.
 #' @param perguntas Vetor de perguntas.
 #' @param chaves Vetor de chaves do json.
@@ -20,7 +20,7 @@ gpt_extrair <- function(x = NULL,
   
   if (list(x, perguntas, chaves) |> purrr::map_lgl(is.null) |> any()){
     
-    stop("x, perguntas e chaves não podem ser nulos.")
+    stop("x, perguntas e chaves n\u00E3o podem ser nulos.")
     
   }
   
@@ -72,7 +72,7 @@ jus_prompt <- function(x, destaques, perguntas, chaves){
   mensagens <- list(
     list(
       "role" = "system",
-      "content" = glue::glue("Considere a decisão a seguir, delimitada por três apóstrofes, ```{x}```")
+      "content" = glue::glue("Considere a decis\u00E3o a seguir, delimitada por tr\u00EAs ap\u00F3strofes, ```{x}```")
     ),
     list(
       "role" = "system",
@@ -87,7 +87,7 @@ jus_prompt <- function(x, destaques, perguntas, chaves){
     d <-   list(
       list(
       "role" = "system",
-      "content"  = glue::glue("Sempre que possível, ao elaborar o resumo, dê destaque às seguintes palavras e expressões, delimitadas por apóstrofes e separadas por ponto e vírgula: ```{stringr::str_c(destaques, collapse = '; ')}```")
+      "content"  = glue::glue("Sempre que poss\u00EDvel, ao elaborar o resumo, d\u00EA destaque \u00E0s seguintes palavras e express\u00F5es, delimitadas por ap\u00F3strofes e separadas por ponto e v\u00EDrgula: ```{stringr::str_c(destaques, collapse = '; ')}```")
       )
       )
   

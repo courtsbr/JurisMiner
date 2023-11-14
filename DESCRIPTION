@@ -33,8 +33,7 @@ Imports:
     httr,
     vctrs,
     stringdist,
-    sys,
-    openai
+    sys
 RoxygenNote: 7.2.3
 Suggests: 
     roxygen2,
@@ -46,4 +45,6 @@ Suggests:
     tokenizers,
     pdftools,
     openxlsx,
-    glue
+    glue,
+    openai,
+    jsonlite
