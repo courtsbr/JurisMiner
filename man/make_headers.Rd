@@ -4,10 +4,12 @@
 \alias{make_headers}
 \title{Cria vetor de headers a partir de texto com headers}
 \usage{
-make_headers(x)
+make_headers(x, cookies = FALSE)
 }
 \arguments{
 \item{x}{String com headers}
+
+\item{cookies}{Manter cookies? O padrão é remover.}
 }
 \value{
 Vetor nomeado para ser usado em 
