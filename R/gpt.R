@@ -24,6 +24,11 @@ gpt_extrair <- function(x = NULL,
     
   }
   
+  if (length(perguntas) != length(chaves)){
+    
+    stop("perguntas e chaves devem ter o mesmo tamanho.")
+  }
+  
   
   
   taxa <- purrr::rate_delay(0.2, max_times = 3)
