@@ -47,4 +47,5 @@ Suggests:
     openxlsx,
     glue,
     openai,
-    jsonlite
+    jsonlite,
+    snakecase
