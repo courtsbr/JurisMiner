@@ -11,7 +11,7 @@ gpt_ler <- function (arquivos, colunas = NULL)
 
   if (is.null(colunas) | !is.vector(colunas)){
 
-    stop("Você tem de fornecer o vetor de colunas")
+    stop("Voc\u00EA tem de fornecer o vetor de colunas")
   }
 
   purrr::map_dfr(arquivos, purrr::possibly(~{
