@@ -2,7 +2,7 @@ Package: JurisMiner
 Type: Package
 Date: 2023-06-20
 Title: Mineração de textos dos tribunais brasilerios
-Version: 1.2.0.9000
+Version: 1.3.0
 Authors@R: c(
            person("José", "de Jesus Filho", email = "jjesus@consudata.org.br",
            role = c("aut", "cre")),
@@ -48,4 +48,5 @@ Suggests:
     glue,
     openai,
     jsonlite,
-    snakecase
+    snakecase,
+    reticulate
