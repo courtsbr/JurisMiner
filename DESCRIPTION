@@ -49,4 +49,5 @@ Suggests:
     openai,
     jsonlite,
     snakecase,
-    reticulate
+    reticulate,
+    readr
