@@ -12,8 +12,11 @@ file_search <- function( pattern = "", dir = "R"){
   
   a <- list.files(dir,full.names = TRUE) 
   
-  purrr::map_chr(a,~readLines(.x) %>% stringr::str_c(collapse ="\n")) %>% 
-    stringr::str_which(pattern) %>% 
-    a[.]
+ purrr::map_chr(a, ~{
+    readr::read_lines(.x) %>% 
+      stringr::str_c(collapse = "\n")
+  }) |> 
+    stringr::str_which(pattern) |> 
+    vctrs::vec_slice(a, i= _)
   
 }
