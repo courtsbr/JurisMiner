@@ -20,8 +20,9 @@ gpt_ler <- function (arquivos, colunas = NULL)
 
     .x |>
       jsonlite::fromJSON() |>
-      purrr::map_if(rlang::is_empty, \(x) NA_charater_) |>
+      purrr::map_if(rlang::is_empty, \(x) NA_character_) |>
       as.data.frame() |>
+      dplyr::mutate_all(as.character) |>
       dplyr::select(dplyr::any_of(colunas)) |>
       tibble::add_column(nome_arquivo, .before = 1)
 
