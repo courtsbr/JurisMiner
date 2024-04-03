@@ -1,6 +1,6 @@
 #' Submete decisões judiciais à  API da OPENAI e obtêm os resultados em json.
 #'
-#' @param x Decisisões judicial
+#' @param x Decisisões judiciais
 #' @param destaques Vetor de palavras ou expressões a destacar.
 #' @param perguntas Vetor de perguntas.
 #' @param chaves Vetor de chaves do json.
