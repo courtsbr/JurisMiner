@@ -3,7 +3,7 @@
 #' Text mining of Brazilian judicial decisions
 #'
 #'
-#' @docType package
+"_PACKAGE"
 #' @name jurisMiner
 #' @importFrom magrittr %>% %<>%
 #' @importFrom rlang :=

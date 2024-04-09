@@ -14,7 +14,7 @@ gpt_extrair(
 )
 }
 \arguments{
-\item{x}{Decisisões judicial}
+\item{x}{Decisisões judiciais}
 
 \item{destaques}{Vetor de palavras ou expressões a destacar.}
 
