@@ -7,7 +7,6 @@
 #'     apóstrofes.
 #' @param perguntas Vetor de perguntas.
 #' @param colunas Vetor de colunas.
-#' @param candidate_count Número de respostas
 #' @param temperatura Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.
 #' @param max_output_tokens = Número máximo na resposta.
 #' @param top_p  Máxima probabilidade cumulativa para a amostra de tokens.
@@ -21,7 +20,6 @@ gemini_extrair <- function(x,
                            instrucao, 
                            perguntas, 
                            colunas,
-                           candidate_count = 1,
                            temperatura = 0,
                            max_output_tokens = 4000,
                            top_p = 0.4,
@@ -58,7 +56,7 @@ Retorne as respostas em formato json com as seguintes chaves: {colunas}")
 
 `generationConfig` = list(
   temperature = temperatura,
-  maxOutputTokens =  max_output_tokens,
+  `maxOutputTokens` =  max_output_tokens,
   topP =  top_p,
   topK = top_k
 )

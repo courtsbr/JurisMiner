@@ -10,7 +10,6 @@ gemini_extrair(
   instrucao,
   perguntas,
   colunas,
-  candidate_count = 1,
   temperatura = 0,
   max_output_tokens = 4000,
   top_p = 0.4,
@@ -29,8 +28,6 @@ apóstrofes.}
 \item{perguntas}{Vetor de perguntas.}
 
 \item{colunas}{Vetor de colunas.}
-
-\item{candidate_count}{Número de respostas}
 
 \item{temperatura}{Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.}
 
