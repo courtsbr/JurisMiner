@@ -29,8 +29,8 @@ gemini_extrair <- function(x,
     
     api_key = Sys.getenv("GEMINI_API_KEY")
   }
-  
-  uri <- paste0("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=",api_key)
+  uri <- paste0("https://generativelanguage.googleapis.com//v1beta/models/gemini-1.5-pro-latest:generateContent?key=",api_key)
+
   
   headers <- c(`Content-Type`="application/json")
   
