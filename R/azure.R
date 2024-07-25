@@ -83,7 +83,8 @@ x1 <-  httr::POST(base_url,
                 body = corpo, 
                 encode = "json", 
                 httr::add_headers(`api-key`= api_key, 
-                                  `Content-Type`="application/json")) |> 
+                                  `Content-Type`="application/json"),
+                httr::timeout(60)) |> 
       httr::content("text") |> 
       jsonlite::fromJSON() |> 
       purrr::pluck("choices","message","content")
