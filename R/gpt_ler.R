@@ -17,8 +17,10 @@ gpt_ler <- function (arquivos, colunas = NULL)
   purrr::map_dfr(arquivos, purrr::possibly(~{
 
     nome_arquivo <- basename(.x)
-
-    .x |>
+     .x |>
+     readLines() |> 
+      stringr::str_subset("```", negate = T) |> 
+      stringr::str_c(collapse = "\n") |> 
       jsonlite::fromJSON() |>
       purrr::map_if(rlang::is_empty, \(x) NA_character_) |>
       as.data.frame() |>
