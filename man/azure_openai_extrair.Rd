@@ -10,9 +10,9 @@ azure_openai_extrair(
   perguntas,
   colunas,
   destaques = NULL,
-  recurso,
-  implementacao,
-  versao_api = "2023-10-01-preview",
+  recurso = NULL,
+  implementacao = NULL,
+  versao_api = NULL,
   api_key = NULL,
   temperatura = 0,
   max_tokens = 4000,
@@ -35,16 +35,19 @@ de texto a ser analisado.}
 
 \item{recurso}{Nome do recurso ou endpoint. Nome do recurso criado por você. 
 Você pode informar tanto o recuso quanto o endpoint que contêm o recurso.
-Para encontrá-lo, vá para Azure OpenAI Studio > Playground > View code.}
+Para encontrá-lo, vá para Azure OpenAI Studio > Playground > View code.
+Você pode usar também a variável de ambiente: AZURE_OPENAI_RESOURCE}
 
 \item{implementacao}{OU deployment id. Este valor corresponde ao nome
 dado por você ao implementar (deploy) um modelo. Pode ser encontrado em
-Resource Management > Model Deployments.}
+Resource Management > Model Deployments. 
+Você pode usar também a variável de ambiente: AZURE_OPENAI_IMPLEMENTACAO}
 
-\item{versao_api}{Versão no formato: yyyy-mm-dd com ou sem preview.}
+\item{versao_api}{Versão no formato: yyyy-mm-dd com ou sem preview.
+Você pode usar também a variável de ambiente: AZURE_OPENAI_VERSAO_API}
 
 \item{api_key}{Chave. Você pode armazená-la na variável de ambiente
-AZURE_OPENAI_KEY.}
+AZURE_OPENAI_API_KEY.}
 
 \item{temperatura}{Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.}
 

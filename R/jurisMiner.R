@@ -1,10 +1,9 @@
-#' \code{jurisMiner} package
+#' \code{JurisMiner} package
 #'
 #' Text mining of Brazilian judicial decisions
 #'
 #'
 "_PACKAGE"
-#' @name jurisMiner
 #' @importFrom magrittr %>% %<>%
 #' @importFrom rlang :=
 NULL

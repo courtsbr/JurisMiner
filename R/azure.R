@@ -9,12 +9,15 @@
 #' @param recurso Nome do recurso ou endpoint. Nome do recurso criado por você. 
 #'      Você pode informar tanto o recuso quanto o endpoint que contêm o recurso.
 #'      Para encontrá-lo, vá para Azure OpenAI Studio > Playground > View code.
+#'      Você pode usar também a variável de ambiente: AZURE_OPENAI_RESOURCE
 #' @param implementacao OU deployment id. Este valor corresponde ao nome
 #'      dado por você ao implementar (deploy) um modelo. Pode ser encontrado em
-#'      Resource Management > Model Deployments.
+#'      Resource Management > Model Deployments. 
+#'      Você pode usar também a variável de ambiente: AZURE_OPENAI_IMPLEMENTACAO
 #' @param versao_api Versão no formato: yyyy-mm-dd com ou sem preview.
+#'      Você pode usar também a variável de ambiente: AZURE_OPENAI_VERSAO_API
 #' @param api_key Chave. Você pode armazená-la na variável de ambiente
-#'     AZURE_OPENAI_KEY.
+#'     AZURE_OPENAI_API_KEY.
 #' @param temperatura Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.
 #' @param max_tokens Máximo de tokens na resposta.
 #' @param presence_penalty Valores entre -2 e 2. Quanto maior o valor
@@ -31,9 +34,9 @@ azure_openai_extrair <- function(x,
                                  perguntas, 
                                  colunas,
                                  destaques = NULL,
-                                 recurso,
-                                 implementacao,
-                                 versao_api = "2023-10-01-preview",
+                                 recurso = NULL,
+                                 implementacao = NULL,
+                                 versao_api = NULL,
                                  api_key = NULL,
                                  temperatura = 0,
                                  max_tokens = 4000,
@@ -59,8 +62,29 @@ azure_openai_extrair <- function(x,
   # Prompt for information if necessary
   if (is.null(api_key)) {
     
-    api_key <- Sys.getenv("AZURE_OPENAI_KEY")
+    api_key <- Sys.getenv("AZURE_OPENAI_API_KEY")
 
+  }
+  
+  
+  # Prompt for information if necessary
+  if (is.null(recurso)) {
+    
+    recurso <- Sys.getenv("AZURE_OPENAI_RESOURCE")
+    
+  }
+  
+  
+  if (is.null(implementacao)) {
+    
+    implementacao <- Sys.getenv("AZURE_OPENAI_IMPLEMENTACAO")
+    
+  }
+  
+  if (is.null(versao_api)) {
+    
+    versao_api <- Sys.getenv("AZURE_OPENAI_VERSAO_API")
+    
   }
   
   

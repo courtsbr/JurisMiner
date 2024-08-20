@@ -4,7 +4,7 @@
 \name{JurisMiner-package}
 \alias{JurisMiner}
 \alias{JurisMiner-package}
-\title{\code{jurisMiner} package}
+\title{\code{JurisMiner} package}
 \description{
 Text mining of Brazilian judicial decisions
 }
