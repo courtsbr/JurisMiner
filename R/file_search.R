@@ -10,7 +10,9 @@
 #'
 file_search <- function( pattern = "", dir = "R"){
   
-  a <- list.files(dir,full.names = TRUE) 
+a <- list.files(dir, full.names = TRUE)
+  
+  a <- subset(a, subset = !dir.exists(a))
   
  purrr::map_chr(a, ~{
     readr::read_lines(.x) %>% 
