@@ -34,7 +34,7 @@ Imports:
     vctrs,
     stringdist,
     sys
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     roxygen2,
     quanteda,
