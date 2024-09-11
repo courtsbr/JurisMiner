@@ -50,4 +50,5 @@ Suggests:
     jsonlite,
     snakecase,
     reticulate,
-    readr
+    readr,
+    ssh
