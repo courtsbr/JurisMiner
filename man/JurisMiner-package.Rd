@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: José de Jesus Filho \email{jjesus@consudata.org.br}
+\strong{Maintainer}: José de Jesus Filho \email{jjesusfilho@gmail.com}
 
 Other contributors:
 \itemize{

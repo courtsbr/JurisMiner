@@ -31,6 +31,7 @@ Imports:
     rlang (>= 0.1.2),
     lubridate,
     httr,
+    httr2,
     vctrs,
     stringdist,
     sys
