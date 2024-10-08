@@ -1,10 +1,10 @@
 Package: JurisMiner
 Type: Package
-Date: 2023-06-20
+Date: 2024-10-08
 Title: Mineração de textos dos tribunais brasilerios
-Version: 1.4.0
+Version: 1.5.0
 Authors@R: c(
-           person("José", "de Jesus Filho", email = "jjesus@consudata.org.br",
+           person("José", "de Jesus Filho", email = "jjesusfilho@gmail.com",
            role = c("aut", "cre")),
            person(family = "Brazilian Jurimetrics Association", role = "cph"))
 Maintainer: The package maintainer <jjesusfilho@gmail.com>
