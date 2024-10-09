@@ -1,6 +1,7 @@
 #' Submete decisões judiciais à  API da OPENAI e obtêm os resultados em json.
 #'
 #' @param x Decisisões judiciais
+#' @param tipo_texto Tipo de texto
 #' @param destaques Vetor de palavras ou expressões a destacar.
 #' @param perguntas Vetor de perguntas.
 #' @param chaves Vetor de chaves do json.
@@ -11,10 +12,11 @@
 #' @export
 #'
 gpt_extrair <- function(x = NULL, 
+                        tipo_texto = "decis\u00E3o",
                         destaques = NULL, 
                         perguntas = NULL, 
                         chaves = NULL,
-                        modelo = 'gpt-3.5-turbo-16k',
+                        modelo = 'gpt-4o-mini',
                         temperatura = 0){
   
   
@@ -77,7 +79,7 @@ jus_prompt <- function(x, destaques, perguntas, chaves){
   mensagens <- list(
     list(
       "role" = "system",
-      "content" = glue::glue("Considere a decis\u00E3o a seguir, delimitada por tr\u00EAs ap\u00F3strofes, ```{x}```")
+      "content" = glue::glue("Considere o texto {tipo_texto} a seguir, delimitada por tr\u00EAs ap\u00F3strofes, ```{x}```")
     ),
     list(
       "role" = "system",

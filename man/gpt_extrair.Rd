@@ -6,15 +6,18 @@
 \usage{
 gpt_extrair(
   x = NULL,
+  tipo_texto = "decisão",
   destaques = NULL,
   perguntas = NULL,
   chaves = NULL,
-  modelo = "gpt-3.5-turbo-16k",
+  modelo = "gpt-4o-mini",
   temperatura = 0
 )
 }
 \arguments{
 \item{x}{Decisisões judiciais}
+
+\item{tipo_texto}{Tipo de texto}
 
 \item{destaques}{Vetor de palavras ou expressões a destacar.}
 

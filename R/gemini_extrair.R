@@ -7,6 +7,7 @@
 #'     apóstrofes.
 #' @param perguntas Vetor de perguntas.
 #' @param colunas Vetor de colunas.
+#' @param modelo Modelo do Gemini
 #' @param temperatura Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.
 #' @param max_output_tokens = Número máximo na resposta.
 #' @param top_p  Máxima probabilidade cumulativa para a amostra de tokens.
@@ -20,6 +21,7 @@ gemini_extrair <- function(x,
                            instrucao, 
                            perguntas, 
                            colunas,
+                           modelo = "gemini-1.5-pro-latest",
                            temperatura = 0,
                            max_output_tokens = 4000,
                            top_p = 0.4,
@@ -29,7 +31,7 @@ gemini_extrair <- function(x,
     
     api_key = Sys.getenv("GEMINI_API_KEY")
   }
-  uri <- paste0("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=",api_key)
+  uri <- glue("https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={api_key}")
 
   
   headers <- c(`Content-Type`="application/json")
