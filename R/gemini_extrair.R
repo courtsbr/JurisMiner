@@ -8,6 +8,7 @@
 #' @param perguntas Vetor de perguntas.
 #' @param colunas Vetor de colunas.
 #' @param modelo Modelo do Gemini
+#' @param saida Padrão para "application/json"
 #' @param temperatura Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.
 #' @param max_output_tokens = Número máximo na resposta.
 #' @param top_p  Máxima probabilidade cumulativa para a amostra de tokens.
@@ -21,7 +22,8 @@ gemini_extrair <- function(x,
                            instrucao, 
                            perguntas, 
                            colunas,
-                           modelo = "gemini-1.5-pro-latest",
+                           modelo = "gemini-1.5-flash",
+                           saida = "application/json",
                            temperatura = 0,
                            max_output_tokens = 4000,
                            top_p = 0.4,
@@ -32,7 +34,7 @@ gemini_extrair <- function(x,
     api_key = Sys.getenv("GEMINI_API_KEY")
   }
   uri <- glue::glue("https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={api_key}")
-
+  
   
   headers <- c(`Content-Type`="application/json")
   
@@ -45,26 +47,27 @@ gemini_extrair <- function(x,
 {perguntas}
 Retorne as respostas em formato json com as seguintes chaves: {colunas}")
     )),
-`safetySettings` = list(
-  list(category = "HARM_CATEGORY_HARASSMENT",
-       threshold = "BLOCK_NONE"),
-  list(category = "HARM_CATEGORY_HATE_SPEECH",
-       threshold = "BLOCK_NONE"),
-  list(category = "HARM_CATEGORY_DANGEROUS_CONTENT",
-       threshold = "BLOCK_NONE"),
-  list(category = "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-       threshold = "BLOCK_NONE")
-),
-
-`generationConfig` = list(
-  temperature = temperatura,
-  `maxOutputTokens` =  max_output_tokens,
-  topP =  top_p,
-  topK = top_k
-)
-
-
-)
+    `safetySettings` = list(
+      list(category = "HARM_CATEGORY_HARASSMENT",
+           threshold = "BLOCK_NONE"),
+      list(category = "HARM_CATEGORY_HATE_SPEECH",
+           threshold = "BLOCK_NONE"),
+      list(category = "HARM_CATEGORY_DANGEROUS_CONTENT",
+           threshold = "BLOCK_NONE"),
+      list(category = "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+           threshold = "BLOCK_NONE")
+    ),
+    
+    `generationConfig` = list(
+      `response_mime_type` = saida,
+      temperature = temperatura,
+      `maxOutputTokens` =  max_output_tokens,
+      topP =  top_p,
+      topK = top_k
+    )
+    
+    
+  )
   
   
   taxa <- purrr::rate_delay(0.2, max_times = 3)
@@ -89,4 +92,3 @@ Retorne as respostas em formato json com as seguintes chaves: {colunas}")
   extrair <- purrr::insistently(.f, taxa, quiet = FALSE)
   extrair()
 }
-
