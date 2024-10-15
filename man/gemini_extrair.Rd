@@ -10,7 +10,8 @@ gemini_extrair(
   instrucao,
   perguntas,
   colunas,
-  modelo = "gemini-1.5-pro-latest",
+  modelo = "gemini-1.5-flash",
+  saida = "application/json",
   temperatura = 0,
   max_output_tokens = 4000,
   top_p = 0.4,
@@ -31,6 +32,8 @@ apóstrofes.}
 \item{colunas}{Vetor de colunas.}
 
 \item{modelo}{Modelo do Gemini}
+
+\item{saida}{Padrão para "application/json"}
 
 \item{temperatura}{Nível de aleatoriedade. Padrão: 0, ou seja, determinístico.}
 
