@@ -24,8 +24,8 @@ gemini_extrair <- function(x,
                            colunas,
                            modelo = "gemini-1.5-flash",
                            saida = "application/json",
-                           temperatura = 0,
-                           max_output_tokens = 4000,
+                           temperatura = 1,
+                           max_output_tokens = 8192,
                            top_p = 0.4,
                            top_k = 2){
   
@@ -113,15 +113,15 @@ Retorne as respostas em formato json com as seguintes chaves: {colunas}")
 #' @export
 #'
 gemini_extrair2 <- function(x, 
-                           api_key=NULL, 
-                           instrucao, 
-                           perguntas, 
-                           colunas,
-                           modelo = "gemini-1.5-flash",
-                           temperatura = 0,
-                           max_output_tokens = 100000,
-                           top_p = 0.4,
-                           top_k = 2){
+                            api_key=NULL, 
+                            instrucao, 
+                            perguntas, 
+                            colunas,
+                            modelo = "gemini-1.5-flash",
+                            temperatura = 1,
+                            max_output_tokens = 100000,
+                            top_p = 0.4,
+                            top_k = 2){
   
   if(is.null(api_key)){
     
@@ -188,4 +188,3 @@ gemini_extrair2 <- function(x,
   extrair <- purrr::insistently(.f, taxa, quiet = FALSE)
   extrair()
 }
-
