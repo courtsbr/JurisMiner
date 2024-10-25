@@ -79,7 +79,7 @@ jus_prompt <- function(x, destaques, perguntas, chaves){
   mensagens <- list(
     list(
       "role" = "system",
-      "content" = glue::glue("Considere o texto {tipo_texto} a seguir, delimitada por tr\u00EAs ap\u00F3strofes, ```{x}```")
+      "content" = glue::glue("Considere o texto a seguir, delimitada por tr\u00EAs ap\u00F3strofes, ```{x}```")
     ),
     list(
       "role" = "system",
