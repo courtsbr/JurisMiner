@@ -2,6 +2,7 @@
 
 export(":=")
 export(.data)
+export(adicionar_grupo_tabela)
 export(agrupar_datas)
 export(as_label)
 export(as_name)

@@ -12,8 +12,8 @@ gemini_extrair(
   colunas,
   modelo = "gemini-1.5-flash",
   saida = "application/json",
-  temperatura = 0,
-  max_output_tokens = 4000,
+  temperatura = 1,
+  max_output_tokens = 8192,
   top_p = 0.4,
   top_k = 2
 )

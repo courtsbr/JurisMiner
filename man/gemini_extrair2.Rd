@@ -11,7 +11,7 @@ gemini_extrair2(
   perguntas,
   colunas,
   modelo = "gemini-1.5-flash",
-  temperatura = 0,
+  temperatura = 1,
   max_output_tokens = 1e+05,
   top_p = 0.4,
   top_k = 2
